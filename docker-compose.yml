@@ -1,45 +1,62 @@
-version: '3.1'
-
 services:
-
-  mongo:
-    container_name: gazetteer_mongo
-    image: mongo:4.0
-    volumes:
-      - ./mongo/docker-entrypoint.sh:/docker-entrypoint.sh
-      - ./src/test/resources:/docker-entrypoint-initdb.d/data
+  tomcat:
+    image: tomcat:9.0-jdk11
+    container_name: tomcat
+    depends_on:
+      - mongodb
+      - elasticsearch
+    ports:
+      - "8080:8080"
     environment:
-      MONGO_INITDB_DATABASE: gazetteer
+      # Example environment variables your app could use
+      - MONGO_URI=mongodb://mongodb:27017/myapp
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    volumes:
+      # Mount your WAR file into Tomcat’s webapps directory
+      - ./target/gazetteer.war:/usr/local/tomcat/webapps/gazetteer.war
+    networks:
+      - gazetteer
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.0
+    # volumes:
+    #   - ./mongo/docker-entrypoint.sh:/docker-entrypoint.sh
+    #   - ./src/test/resources:/docker-entrypoint-initdb.d/data
+    # environment:
+    #   MONGO_INITDB_DATABASE: gazetteer
     ports:
       - 27017:27017
-    entrypoint: /docker-entrypoint.sh
+    # entrypoint: /docker-entrypoint.sh
     networks:
-    - gazetteer
+      - gazetteer
 
   elasticsearch:
-    container_name: gazetteer_elasticsearch
-    build:
-      context: ./elasticsearch
+    container_name: elasticsearch
+    image: elasticsearch:6.7.1
     environment:
       - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - xpack.security.enabled=false
       - cluster.name=gazetteer.dainst.org
     ports:
       - 9200:9200
-      - 9300:9300
     networks:
       - gazetteer
 
-  elasticsearch-init:
-    container_name: gazetteer_elasticsearch_init
-    build:
-      context: ./elasticsearch-init
-    volumes:
-      - ./elasticsearch-init/docker-entrypoint.sh:/docker-entrypoint.sh
-      - ./src/main/resources/es/_template/place_template.json:/mappings/place_template.json
-    environment:
-      ELASTICSEARCH_CONTAINER_NAME: gazetteer_elasticsearch
-    networks:
-      - gazetteer
+  # elasticsearch-init:
+  #   container_name: gazetteer_elasticsearch_init
+  #   image: elasticsearch:6.7.1
+  #   depends_on:
+  #     - elasticsearch
+  #   volumes:
+  #     - ./elasticsearch-init/docker-entrypoint.sh:/docker-entrypoint.sh
+  #     - ./src/main/resources/es/_template/place_template_new.json:/mappings/place_template.json
+  #   entrypoint: /docker-entrypoint.sh
+  #   environment:
+  #     - ELASTICSEARCH_CONTAINER_NAME=elasticsearch
+  #   networks:
+  #     - gazetteer
 
 volumes:
   esdata:

@@ -1,0 +1,892 @@
+2025-10-29 15:26:52,701 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-29 15:26:52,714 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-29 15:26:52,761 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-29 15:26:52,761 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-29 15:26:52,761 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-29 15:26:52,762 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-29 15:26:52,762 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-29 15:26:52,763 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-29 15:26:52,763 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-29 15:26:52,763 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-29 15:26:52,840 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 125ms. Found 8 repository interfaces.
+2025-10-29 15:26:53,435 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HelpTextRepository…
+2025-10-29 15:26:53,486 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HelpText for index information.
+2025-10-29 15:26:53,547 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HelpTextRepository.
+2025-10-29 15:26:53,550 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.GroupRoleRepository…
+2025-10-29 15:26:53,556 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupRole for index information.
+2025-10-29 15:26:53,579 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.GroupRoleRepository.
+2025-10-29 15:26:53,581 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository…
+2025-10-29 15:26:53,586 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.UserPasswordChangeRequest for index information.
+2025-10-29 15:26:53,592 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository.
+2025-10-29 15:26:53,594 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository…
+2025-10-29 15:26:53,601 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HarvesterDefinition for index information.
+2025-10-29 15:26:53,607 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository.
+2025-10-29 15:26:53,608 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-29 15:26:53,619 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-29 15:26:53,625 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-29 15:26:53,631 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-29 15:26:53,633 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-29 15:26:53,637 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-29 15:26:53,640 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-29 15:26:53,644 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-29 15:26:53,646 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-29 15:26:53,888 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceRepository.
+2025-10-29 15:26:53,889 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository…
+2025-10-29 15:26:53,892 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceChangeRecord for index information.
+2025-10-29 15:26:53,896 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository.
+2025-10-29 15:26:53,897 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.RecordGroupRepository…
+2025-10-29 15:26:53,900 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.RecordGroup for index information.
+2025-10-29 15:26:53,903 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.RecordGroupRepository.
+2025-10-29 15:26:53,905 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserRepository…
+2025-10-29 15:26:53,911 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class interface org.springframework.security.core.GrantedAuthority for index information.
+2025-10-29 15:26:53,913 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.User for index information.
+2025-10-29 15:26:53,916 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserRepository.
+2025-10-29 15:26:53,920 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter for index information.
+2025-10-29 15:26:53,933 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "place_id_counter4" } fields: {} for class: class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter in collection: counter
+2025-10-29 15:26:53,937 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "_id" : "place_id_counter4" } fields: { } in db.collection: gazetteer.counter
+2025-10-29 15:26:53,966 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, value, _class]
+2025-10-29 15:26:53,995 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - Catalina-utility-1 - start allocateBlock()
+2025-10-29 15:26:53,995 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "place_id_counter4" } fields: {} for class: class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter in collection: counter
+2025-10-29 15:26:53,996 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "_id" : "place_id_counter4" } fields: { } in db.collection: gazetteer.counter
+2025-10-29 15:26:54,004 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - Catalina-utility-1 - incremented counter to 1000100
+2025-10-29 15:26:54,005 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, value, _class]
+2025-10-29 15:26:54,008 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - Catalina-utility-1 - allocated IDs up to 1000100
+2025-10-29 15:26:54,008 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - Catalina-utility-1 - end allocateBlock()
+2025-10-29 15:26:54,951 - INFO : org.dainst.gazetteer.harvest.HarvestingManager - initializing HarvestingManager
+2025-10-29 15:26:54,968 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { } fields: {} for class: class org.dainst.gazetteer.domain.HarvesterDefinition in collection: harvesterDefinition
+2025-10-29 15:27:02,411 - DEBUG: org.dainst.gazetteer.controller.HomeController - findOne: 0
+2025-10-29 15:27:02,506 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-29 15:30:42,215 - DEBUG: org.dainst.gazetteer.controller.SearchController - bbox:null
+2025-10-29 15:30:42,228 - DEBUG: org.dainst.gazetteer.controller.SearchController - Searching places with query: Berlin, fq: null, limit: 10, offset: 0, type: null
+2025-10-29 15:30:42,450 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:30:42,453 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:30:42,561 - DEBUG: org.dainst.gazetteer.search.ElasticSearchPlaceQuery - Query: {
+  "bool" : {
+    "must" : [
+      {
+        "query_string" : {
+          "query" : "(Berlin) OR _id:\"Berlin\" OR prefName.title:\"Berlin\"^2 OR names.title:\"Berlin\"",
+          "default_field" : "all",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "and",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "filter" : [
+      {
+        "query_string" : {
+          "query" : "recordGroupId:(none)",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "deleted:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "needsReview:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}
+2025-10-29 15:30:42,753 - DEBUG: org.dainst.gazetteer.controller.SearchController - Querying index returned: 0 places
+2025-10-29 15:30:42,753 - DEBUG: org.dainst.gazetteer.controller.SearchController - Result: []
+2025-10-29 15:30:42,754 - DEBUG: org.dainst.gazetteer.controller.SearchController - Places: []
+2025-10-29 15:32:00,485 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:00,486 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:00,664 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:00,666 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:00,737 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:00,737 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:00,912 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:00,913 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:01,093 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:01,094 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:01,186 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:01,188 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:02,052 - DEBUG: org.dainst.gazetteer.controller.SearchController - bbox:null
+2025-10-29 15:32:02,054 - DEBUG: org.dainst.gazetteer.controller.SearchController - Searching places with query: berlin, fq: , limit: 10, offset: 0, type: null
+2025-10-29 15:32:02,056 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:32:02,057 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:32:02,060 - DEBUG: org.dainst.gazetteer.search.ElasticSearchPlaceQuery - Query: {
+  "bool" : {
+    "must" : [
+      {
+        "query_string" : {
+          "query" : "(berlin) OR _id:\"berlin\" OR prefName.title:\"berlin\"^2 OR names.title:\"berlin\"",
+          "default_field" : "all",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "and",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "filter" : [
+      {
+        "query_string" : {
+          "query" : "recordGroupId:(none)",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "deleted:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "needsReview:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}
+2025-10-29 15:32:02,090 - DEBUG: org.dainst.gazetteer.controller.SearchController - Querying index returned: 0 places
+2025-10-29 15:32:02,091 - DEBUG: org.dainst.gazetteer.controller.SearchController - Result: []
+2025-10-29 15:32:02,091 - DEBUG: org.dainst.gazetteer.controller.SearchController - Places: []
+2025-10-29 15:49:19,187 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:19,190 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:19,356 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:19,358 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:19,457 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:19,458 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:19,633 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:19,635 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:19,795 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:19,795 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:19,890 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:19,890 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:20,229 - DEBUG: org.dainst.gazetteer.controller.SearchController - bbox:null
+2025-10-29 15:49:20,229 - DEBUG: org.dainst.gazetteer.controller.SearchController - Searching places with query: berlin, fq: , limit: 10, offset: 0, type: null
+2025-10-29 15:49:20,230 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:49:20,230 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:49:20,232 - DEBUG: org.dainst.gazetteer.search.ElasticSearchPlaceQuery - Query: {
+  "bool" : {
+    "must" : [
+      {
+        "query_string" : {
+          "query" : "(berlin) OR _id:\"berlin\" OR prefName.title:\"berlin\"^2 OR names.title:\"berlin\"",
+          "default_field" : "all",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "and",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "filter" : [
+      {
+        "query_string" : {
+          "query" : "recordGroupId:(none)",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "deleted:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "needsReview:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}
+2025-10-29 15:49:20,246 - DEBUG: org.dainst.gazetteer.controller.SearchController - Querying index returned: 0 places
+2025-10-29 15:49:20,246 - DEBUG: org.dainst.gazetteer.controller.SearchController - Result: []
+2025-10-29 15:49:20,246 - DEBUG: org.dainst.gazetteer.controller.SearchController - Places: []
+2025-10-29 15:50:15,141 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:15,142 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:15,279 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:15,280 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:15,380 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:15,382 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:15,516 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:15,516 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:15,711 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:15,714 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:15,779 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:15,780 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:16,427 - DEBUG: org.dainst.gazetteer.controller.SearchController - bbox:null
+2025-10-29 15:50:16,428 - DEBUG: org.dainst.gazetteer.controller.SearchController - Searching places with query: berlin, fq: , limit: 10, offset: 0, type: null
+2025-10-29 15:50:16,428 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:16,429 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:16,431 - DEBUG: org.dainst.gazetteer.search.ElasticSearchPlaceQuery - Query: {
+  "bool" : {
+    "must" : [
+      {
+        "query_string" : {
+          "query" : "(berlin) OR _id:\"berlin\" OR prefName.title:\"berlin\"^2 OR names.title:\"berlin\"",
+          "default_field" : "all",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "and",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "filter" : [
+      {
+        "query_string" : {
+          "query" : "recordGroupId:(none)",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "deleted:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "needsReview:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}
+2025-10-29 15:50:16,445 - DEBUG: org.dainst.gazetteer.controller.SearchController - Querying index returned: 0 places
+2025-10-29 15:50:16,445 - DEBUG: org.dainst.gazetteer.controller.SearchController - Result: []
+2025-10-29 15:50:16,446 - DEBUG: org.dainst.gazetteer.controller.SearchController - Places: []
+2025-10-29 15:50:32,937 - DEBUG: org.dainst.gazetteer.controller.SearchController - bbox:null
+2025-10-29 15:50:32,938 - DEBUG: org.dainst.gazetteer.controller.SearchController - Searching places with query: Berlin, fq: null, limit: 10, offset: 0, type: null
+2025-10-29 15:50:32,939 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:50:32,939 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:50:32,941 - DEBUG: org.dainst.gazetteer.search.ElasticSearchPlaceQuery - Query: {
+  "bool" : {
+    "must" : [
+      {
+        "query_string" : {
+          "query" : "(Berlin) OR _id:\"Berlin\" OR prefName.title:\"Berlin\"^2 OR names.title:\"Berlin\"",
+          "default_field" : "all",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "and",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "filter" : [
+      {
+        "query_string" : {
+          "query" : "recordGroupId:(none)",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "deleted:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "needsReview:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}
+2025-10-29 15:50:32,956 - DEBUG: org.dainst.gazetteer.controller.SearchController - Querying index returned: 0 places
+2025-10-29 15:50:32,956 - DEBUG: org.dainst.gazetteer.controller.SearchController - Result: []
+2025-10-29 15:50:32,956 - DEBUG: org.dainst.gazetteer.controller.SearchController - Places: []
+2025-10-29 15:51:41,679 - DEBUG: org.dainst.gazetteer.controller.SearchController - bbox:null
+2025-10-29 15:51:41,680 - DEBUG: org.dainst.gazetteer.controller.SearchController - Searching places with query: Berlin, fq: null, limit: 10, offset: 0, type: null
+2025-10-29 15:51:41,680 - DEBUG: org.springframework.data.mongodb.repository.query.MongoQueryCreator - Created query Query: { "showPlaces" : true }, Fields: { }, Sort: { }
+2025-10-29 15:51:41,681 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { "showPlaces" : true } fields: {} for class: class org.dainst.gazetteer.domain.RecordGroup in collection: recordGroup
+2025-10-29 15:51:41,684 - DEBUG: org.dainst.gazetteer.search.ElasticSearchPlaceQuery - Query: {
+  "bool" : {
+    "must" : [
+      {
+        "query_string" : {
+          "query" : "(Berlin) OR _id:\"Berlin\" OR prefName.title:\"Berlin\"^2 OR names.title:\"Berlin\"",
+          "default_field" : "all",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "and",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "filter" : [
+      {
+        "query_string" : {
+          "query" : "recordGroupId:(none)",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "deleted:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      },
+      {
+        "query_string" : {
+          "query" : "needsReview:false",
+          "fields" : [ ],
+          "type" : "best_fields",
+          "default_operator" : "or",
+          "max_determinized_states" : 10000,
+          "enable_position_increments" : true,
+          "fuzziness" : "AUTO",
+          "fuzzy_prefix_length" : 0,
+          "fuzzy_max_expansions" : 50,
+          "phrase_slop" : 0,
+          "escape" : false,
+          "auto_generate_synonyms_phrase_query" : true,
+          "fuzzy_transpositions" : true,
+          "boost" : 1.0
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}
+2025-10-29 15:51:41,695 - DEBUG: org.dainst.gazetteer.controller.SearchController - Querying index returned: 0 places
+2025-10-29 15:51:41,695 - DEBUG: org.dainst.gazetteer.controller.SearchController - Result: []
+2025-10-29 15:51:41,696 - DEBUG: org.dainst.gazetteer.controller.SearchController - Places: []
+2025-10-29 17:09:38,651 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-29 17:09:38,670 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-29 17:09:38,736 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-29 17:09:38,736 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-29 17:09:38,736 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-29 17:09:38,737 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-29 17:09:38,737 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-29 17:09:38,737 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-29 17:09:38,738 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-29 17:09:38,738 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-29 17:09:38,800 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 129ms. Found 8 repository interfaces.
+2025-10-29 17:09:39,510 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HelpTextRepository…
+2025-10-29 17:09:39,563 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HelpText for index information.
+2025-10-29 17:09:39,621 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HelpTextRepository.
+2025-10-29 17:09:39,623 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-29 17:09:39,635 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-29 17:09:39,643 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-29 17:09:39,649 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-29 17:09:39,651 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-29 17:09:39,656 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-29 17:09:39,659 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-29 17:09:39,663 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-29 17:09:39,666 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-29 17:11:02,627 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-29 17:11:02,638 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-29 17:11:02,669 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-29 17:11:02,669 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-29 17:11:02,670 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-29 17:11:02,670 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-29 17:11:02,670 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-29 17:11:02,670 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-29 17:11:02,671 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-29 17:11:02,671 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-29 17:11:02,715 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 76ms. Found 8 repository interfaces.
+2025-10-29 17:11:03,110 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HelpTextRepository…
+2025-10-29 17:11:03,221 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HelpText for index information.
+2025-10-29 17:11:03,360 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HelpTextRepository.
+2025-10-29 17:11:03,364 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.GroupRoleRepository…
+2025-10-29 17:11:03,378 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupRole for index information.
+2025-10-29 17:11:03,451 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.GroupRoleRepository.
+2025-10-29 17:11:03,454 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.RecordGroupRepository…
+2025-10-29 17:11:03,472 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.RecordGroup for index information.
+2025-10-29 17:11:03,481 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.RecordGroupRepository.
+2025-10-29 17:11:03,484 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserRepository…
+2025-10-29 17:11:03,507 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class interface org.springframework.security.core.GrantedAuthority for index information.
+2025-10-29 17:11:03,511 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.User for index information.
+2025-10-29 17:11:03,524 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserRepository.
+2025-10-29 17:11:03,528 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-29 17:11:03,553 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-29 17:11:03,566 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-29 17:11:03,580 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-29 17:11:03,581 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-29 17:11:03,591 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-29 17:11:03,597 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-29 17:11:03,605 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-29 17:11:03,608 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-29 17:14:03,784 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-29 17:14:03,803 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-29 17:14:03,856 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-29 17:14:03,857 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-29 17:14:03,857 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-29 17:14:03,857 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-29 17:14:03,858 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-29 17:14:03,859 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-29 17:14:03,859 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-29 17:14:03,860 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-29 17:14:03,994 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 190ms. Found 8 repository interfaces.
+2025-10-29 17:14:04,567 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.GroupRoleRepository…
+2025-10-29 17:14:04,636 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupRole for index information.
+2025-10-29 17:14:04,743 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.GroupRoleRepository.
+2025-10-29 17:14:04,745 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-29 17:14:04,764 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-29 17:14:04,773 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-29 17:14:04,781 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-29 17:14:04,783 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-29 17:14:04,789 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-29 17:14:04,793 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-29 17:14:04,797 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-29 17:14:04,799 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-30 09:49:10,940 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-30 09:49:10,956 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-30 09:49:11,001 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-30 09:49:11,002 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-30 09:49:11,002 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-30 09:49:11,003 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-30 09:49:11,003 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-30 09:49:11,004 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-30 09:49:11,004 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-30 09:49:11,005 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-30 09:49:11,079 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 123ms. Found 8 repository interfaces.
+2025-10-30 09:49:11,718 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository…
+2025-10-30 09:49:11,777 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HarvesterDefinition for index information.
+2025-10-30 09:49:11,853 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository.
+2025-10-30 09:49:11,855 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.RecordGroupRepository…
+2025-10-30 09:49:11,862 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.RecordGroup for index information.
+2025-10-30 09:49:11,867 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.RecordGroupRepository.
+2025-10-30 09:49:11,870 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository…
+2025-10-30 09:49:11,877 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceChangeRecord for index information.
+2025-10-30 09:49:11,885 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository.
+2025-10-30 09:49:11,887 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-30 09:49:11,901 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-30 09:49:11,910 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-30 09:49:11,918 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-30 09:49:11,920 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-30 09:49:11,926 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-30 09:49:11,931 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-30 09:49:11,937 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-30 09:49:11,941 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-30 09:50:43,576 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-30 09:50:43,593 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-30 09:50:43,641 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-30 09:50:43,642 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-30 09:50:43,642 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-30 09:50:43,642 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-30 09:50:43,643 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-30 09:50:43,643 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-30 09:50:43,643 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-30 09:50:43,644 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-30 09:50:43,718 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 124ms. Found 8 repository interfaces.
+2025-10-30 09:50:44,429 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.GroupRoleRepository…
+2025-10-30 09:50:44,488 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupRole for index information.
+2025-10-30 09:50:44,588 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.GroupRoleRepository.
+2025-10-30 09:50:44,593 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-30 09:50:44,606 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-30 09:50:44,614 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-30 09:50:44,621 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-30 09:50:44,623 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-30 09:50:44,628 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-30 09:50:44,632 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-30 09:50:44,637 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-30 09:50:44,641 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-30 09:50:44,745 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceRepository.
+2025-10-30 09:50:44,746 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository…
+2025-10-30 09:50:44,751 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.UserPasswordChangeRequest for index information.
+2025-10-30 09:50:44,757 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository.
+2025-10-30 09:50:44,759 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.RecordGroupRepository…
+2025-10-30 09:50:44,763 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.RecordGroup for index information.
+2025-10-30 09:50:44,767 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.RecordGroupRepository.
+2025-10-30 09:50:44,769 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HelpTextRepository…
+2025-10-30 09:50:44,773 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HelpText for index information.
+2025-10-30 09:50:44,777 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HelpTextRepository.
+2025-10-30 09:50:44,778 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository…
+2025-10-30 09:50:44,783 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceChangeRecord for index information.
+2025-10-30 09:50:44,788 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository.
+2025-10-30 09:50:44,791 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserRepository…
+2025-10-30 09:50:44,799 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class interface org.springframework.security.core.GrantedAuthority for index information.
+2025-10-30 09:50:44,801 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.User for index information.
+2025-10-30 09:50:44,805 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserRepository.
+2025-10-30 09:50:44,807 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository…
+2025-10-30 09:50:44,811 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HarvesterDefinition for index information.
+2025-10-30 09:50:44,814 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository.
+2025-10-30 09:50:44,819 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter for index information.
+2025-10-30 09:50:44,837 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "place_id_counter4" } fields: {} for class: class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter in collection: counter
+2025-10-30 09:50:44,843 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "_id" : "place_id_counter4" } fields: { } in db.collection: gazetteer.counter
+2025-10-30 09:50:44,883 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - start allocateBlock()
+2025-10-30 09:50:44,883 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "place_id_counter4" } fields: {} for class: class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter in collection: counter
+2025-10-30 09:50:44,884 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "_id" : "place_id_counter4" } fields: { } in db.collection: gazetteer.counter
+2025-10-30 09:50:44,888 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - incremented counter to 1000300
+2025-10-30 09:50:44,894 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, value, _class]
+2025-10-30 09:50:44,916 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - allocated IDs up to 1000300
+2025-10-30 09:50:44,916 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - end allocateBlock()
+2025-10-30 09:50:46,032 - INFO : org.dainst.gazetteer.harvest.HarvestingManager - initializing HarvestingManager
+2025-10-30 09:50:46,040 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { } fields: {} for class: class org.dainst.gazetteer.domain.HarvesterDefinition in collection: harvesterDefinition
+2025-10-30 09:51:17,060 - DEBUG: org.dainst.gazetteer.controller.HomeController - findOne: 0
+2025-10-30 09:51:17,136 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:52:57,167 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:52:59,638 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:01,612 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:03,713 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:05,738 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:07,938 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:20,851 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:22,959 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:24,883 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:26,795 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:28,978 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:30,800 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:53:58,575 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2025-10-30 09:55:33,073 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-30 09:55:33,091 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-30 09:55:33,159 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-30 09:55:33,159 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-30 09:55:33,160 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-30 09:55:33,160 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-30 09:55:33,161 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-30 09:55:33,161 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-30 09:55:33,162 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-30 09:55:33,162 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-30 09:55:33,249 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 157ms. Found 8 repository interfaces.
+2025-10-30 09:55:33,888 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.GroupRoleRepository…
+2025-10-30 09:55:33,952 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupRole for index information.
+2025-10-30 09:55:34,047 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.GroupRoleRepository.
+2025-10-30 09:55:34,050 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-30 09:55:34,071 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-30 09:55:34,085 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-30 09:55:34,094 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-30 09:55:34,097 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-30 09:55:34,102 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-30 09:55:34,107 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-30 09:55:34,118 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-30 09:55:34,122 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-30 09:58:23,320 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2025-10-30 09:58:23,332 - DEBUG: org.springframework.data.repository.config.RepositoryConfigurationDelegate - Scanning for repositories in packages org.dainst.gazetteer.dao.
+2025-10-30 09:58:23,380 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/GroupRoleRepository.class]
+2025-10-30 09:58:23,380 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HarvesterDefinitionRepository.class]
+2025-10-30 09:58:23,381 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/HelpTextRepository.class]
+2025-10-30 09:58:23,381 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceChangeRecordRepository.class]
+2025-10-30 09:58:23,382 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/PlaceRepository.class]
+2025-10-30 09:58:23,382 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/RecordGroupRepository.class]
+2025-10-30 09:58:23,383 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserPasswordChangeRequestRepository.class]
+2025-10-30 09:58:23,385 - DEBUG: org.springframework.data.repository.config.RepositoryComponentProvider - Identified candidate component class: file [/home/pej/tomcat/tomcat9/webapps/gazetteer/WEB-INF/classes/org/dainst/gazetteer/dao/UserRepository.class]
+2025-10-30 09:58:23,453 - INFO : org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 120ms. Found 8 repository interfaces.
+2025-10-30 09:58:24,142 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.GroupRoleRepository…
+2025-10-30 09:58:24,199 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupRole for index information.
+2025-10-30 09:58:24,284 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.GroupRoleRepository.
+2025-10-30 09:58:24,286 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceRepository…
+2025-10-30 09:58:24,301 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Link for index information.
+2025-10-30 09:58:24,310 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceName for index information.
+2025-10-30 09:58:24,325 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Shape for index information.
+2025-10-30 09:58:24,327 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Location for index information.
+2025-10-30 09:58:24,335 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Comment for index information.
+2025-10-30 09:58:24,341 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Identifier for index information.
+2025-10-30 09:58:24,346 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.GroupInternalData for index information.
+2025-10-30 09:58:24,351 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.Place for index information.
+2025-10-30 09:58:24,481 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceRepository.
+2025-10-30 09:58:24,483 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository…
+2025-10-30 09:58:24,490 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.UserPasswordChangeRequest for index information.
+2025-10-30 09:58:24,496 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository.
+2025-10-30 09:58:24,498 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.RecordGroupRepository…
+2025-10-30 09:58:24,508 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.RecordGroup for index information.
+2025-10-30 09:58:24,515 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.RecordGroupRepository.
+2025-10-30 09:58:24,519 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HelpTextRepository…
+2025-10-30 09:58:24,525 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HelpText for index information.
+2025-10-30 09:58:24,531 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HelpTextRepository.
+2025-10-30 09:58:24,535 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository…
+2025-10-30 09:58:24,542 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.PlaceChangeRecord for index information.
+2025-10-30 09:58:24,548 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.PlaceChangeRecordRepository.
+2025-10-30 09:58:24,552 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.UserRepository…
+2025-10-30 09:58:24,567 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class interface org.springframework.security.core.GrantedAuthority for index information.
+2025-10-30 09:58:24,570 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.User for index information.
+2025-10-30 09:58:24,577 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.UserRepository.
+2025-10-30 09:58:24,579 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Initializing repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository…
+2025-10-30 09:58:24,586 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.domain.HarvesterDefinition for index information.
+2025-10-30 09:58:24,591 - DEBUG: org.springframework.data.repository.core.support.RepositoryFactorySupport - Finished creation of repository instance for org.dainst.gazetteer.dao.HarvesterDefinitionRepository.
+2025-10-30 09:58:24,596 - DEBUG: org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexCreator - Analyzing class class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter for index information.
+2025-10-30 09:58:24,617 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "place_id_counter4" } fields: {} for class: class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter in collection: counter
+2025-10-30 09:58:24,621 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "_id" : "place_id_counter4" } fields: { } in db.collection: gazetteer.counter
+2025-10-30 09:58:24,658 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - start allocateBlock()
+2025-10-30 09:58:24,659 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "place_id_counter4" } fields: {} for class: class org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator$Counter in collection: counter
+2025-10-30 09:58:24,659 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - findOne using query: { "_id" : "place_id_counter4" } fields: { } in db.collection: gazetteer.counter
+2025-10-30 09:58:24,662 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - incremented counter to 1000400
+2025-10-30 09:58:24,669 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, value, _class]
+2025-10-30 09:58:24,683 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - allocated IDs up to 1000400
+2025-10-30 09:58:24,683 - DEBUG: org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator - main - end allocateBlock()
+2025-10-30 09:58:25,597 - INFO : org.dainst.gazetteer.harvest.HarvestingManager - initializing HarvestingManager
+2025-10-30 09:58:25,607 - DEBUG: org.springframework.data.mongodb.core.MongoTemplate - find using query: { } fields: {} for class: class org.dainst.gazetteer.domain.HarvesterDefinition in collection: harvesterDefinition
+2025-10-30 09:58:32,889 - DEBUG: org.dainst.gazetteer.controller.HomeController - findOne: 0
+2025-10-30 09:58:33,010 - DEBUG: org.dainst.gazetteer.controller.AppController - accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8

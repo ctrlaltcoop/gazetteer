@@ -18,7 +18,7 @@ if [ ! -f /data/db/.metadata/.replicaset ]; then
   mongod --logpath /var/log/mongod.log --fork --replSet rs0 --dbpath /data/db
 
   echo "Initializing replica..."
-  mongo gazetteer --eval 'rs.initiate({ _id : "rs0", members : [ { _id : 0, host : "gazetteer_mongo:27017" } ] });'
+  mongo gazetteer --eval 'rs.initiate({ _id : "rs0", members : [ { _id : 0, host : "mongodb:27017" } ] });'
 
   mkdir -p /data/db/.metadata
   touch /data/db/.metadata/.replicaset
