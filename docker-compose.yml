@@ -25,7 +25,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - ./TOMCAT/:/usr/local/tomcat/webapps/
+      - ./.tomcat/:/usr/local/tomcat/webapps/
     ports:
       - "8080:8080"
     networks:
