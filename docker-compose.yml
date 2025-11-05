@@ -1,6 +1,8 @@
 services:
   tomcat:
-    image: tomcat:9.0-jdk11
+    build:
+      context: .
+      dockerfile: Tomcat.Dockerfile
     container_name: tomcat
     depends_on:
       - mongodb
@@ -11,9 +13,6 @@ services:
       # Example environment variables your app could use
       - MONGO_URI=mongodb://mongodb:27017/myapp
       - ELASTICSEARCH_HOST=http://elasticsearch:9200
-    volumes:
-      # Mount your WAR file into Tomcat’s webapps directory
-      - ./target/gazetteer.war:/usr/local/tomcat/webapps/gazetteer.war
     networks:
       - gazetteer
 
@@ -38,7 +37,7 @@ services:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
       - xpack.security.enabled=false
-      - cluster.name=gazetteer.dainst.org
+      # - cluster.name=gazetteer.dainst.org
     ports:
       - 9200:9200
     networks:
