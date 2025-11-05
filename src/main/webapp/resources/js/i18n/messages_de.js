@@ -4,7 +4,7 @@ messages.factory('messages', function(){
 	return {
 		"ui.error": "Fehler",
 		"ui.contactAdmin": "Wenden Sie sich bitte an arachne@uni-koeln.de, falls das Problem länger besteht.",
-		"ui.search.results": "Suchergebnis22",
+		"ui.search.results": "Suchergebnis",
 		"ui.search.hits": "Treffer",
 		"ui.search.limit.10.tooltip": "10 Treffer pro Seite zeigen",
 		"ui.search.limit.50.tooltip": "50 Treffer pro Seite zeigen",
