@@ -19,4 +19,6 @@ src/main/resources/log4j2.xml
 builds/
 
 # docker dev
+.m2
+.mongo-data
 .tomcat

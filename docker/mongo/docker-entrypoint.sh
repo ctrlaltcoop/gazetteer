@@ -1,6 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [ ! -f /data/db/.metadata/.replicaset ]; then
+  echo "Creating database"
   mongod --fork --dbpath /data/db --port 27017 --logpath /var/log/mongod.log
   RET=1
   while [ $RET -ne 0 ]
@@ -33,5 +34,6 @@ if [ ! -f /data/db/.metadata/.replicaset ]; then
   echo "Start"
   mongod --replSet rs0 --dbpath /data/db --bind_ip_all
 else
+  echo "Database already exists"
   mongod --replSet rs0 --dbpath /data/db --bind_ip_all
 fi

@@ -5,11 +5,12 @@ services:
       dockerfile: docker/builder/Dockerfile
     container_name: builder
     volumes:
-      - ~/.m2/:/root/.m2/
+      - ./.m2/:/root/.m2/
       - ./:/src/
       - ./docker/builder/docker-entrypoint.sh:/docker-entrypoint.sh
     working_dir: /src
     entrypoint: /docker-entrypoint.sh
+    user: 1000:1000
     networks:
       - gazetteer
 
@@ -28,6 +29,7 @@ services:
       - ./.tomcat/:/usr/local/tomcat/webapps/
     ports:
       - "8080:8080"
+    user: 1000:1000
     networks:
       - gazetteer
 
@@ -35,13 +37,14 @@ services:
     container_name: mongodb
     image: mongo:4.0
     volumes:
+      - ./.mongo-data/:/data/
       - ./docker/mongo/docker-entrypoint.sh:/docker-entrypoint.sh
       - ./src/test/resources:/docker-entrypoint-initdb.d/data
     environment:
       MONGO_INITDB_DATABASE: gazetteer
     ports:
       - 27017:27017
-    # entrypoint: /docker-entrypoint.sh
+    entrypoint: /docker-entrypoint.sh
     networks:
       - gazetteer
 
@@ -55,6 +58,7 @@ services:
       # - cluster.name=gazetteer.dainst.org
     ports:
       - 9200:9200
+    user: 1000:1000
     networks:
       - gazetteer
 
@@ -69,6 +73,7 @@ services:
     entrypoint: /docker-entrypoint.sh
     environment:
       - ELASTICSEARCH_CONTAINER_NAME=elasticsearch
+    user: 1000:1000
     networks:
       - gazetteer
 
