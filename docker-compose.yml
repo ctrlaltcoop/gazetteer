@@ -1,7 +1,6 @@
 services:
   builder:
     build:
-      context: .
       dockerfile: docker/builder/Dockerfile
     container_name: builder
     volumes:
@@ -10,7 +9,6 @@ services:
       - ./docker/builder/docker-entrypoint.sh:/docker-entrypoint.sh
     working_dir: /src
     entrypoint: /docker-entrypoint.sh
-    user: 1000:1000
     networks:
       - gazetteer
 
