@@ -10,8 +10,6 @@ services:
       - ./builder-docker-entrypoint.sh:/docker-entrypoint.sh
     working_dir: /src
     entrypoint: /docker-entrypoint.sh
-    healthcheck:
-      test: ["CMD", "test", "-e", "/src/target/gazeteer.war"]
     networks:
       - gazetteer
 
@@ -19,11 +17,15 @@ services:
     container_name: tomcat
     image: tomcat:9.0-jdk11
     depends_on:
-      - mongodb
-      - elasticsearch
-      - builder
+      mongodb:
+        condition: service_started
+      elasticsearch:
+        condition: service_started
+      builder:
+        condition: service_healthy
+        restart: true
     volumes:
-      - ./target/gazetteer.war:/usr/local/tomcat/webapps/gazetteer.war
+      - ./TOMCAT/:/usr/local/tomcat/webapps/
     ports:
       - "8080:8080"
     networks:
