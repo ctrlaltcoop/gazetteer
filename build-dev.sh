@@ -26,6 +26,3 @@ cp src/main/webapp/WEB-INF/mail.properties.template src/main/webapp/WEB-INF/mail
 sed -i 's|/var/log/gazetteer/gazetteer.log|logs/gazetteer.log|g' src/main/resources/log4j2.xml
 
 mvn clean package -Dmaven.test.skip=true
-
-cp -r target/gazetteer.war target/gatetteer-dev.war 
-cp -r target/gazetteer.war $DIST_DIR/$TODAY/gazetteer-dev.war
