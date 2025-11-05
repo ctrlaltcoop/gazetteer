@@ -64,7 +64,7 @@ services:
     depends_on:
       - elasticsearch
     volumes:
-      - ./elasticsearch-init/docker-entrypoint.sh:/docker-entrypoint.sh
+      - ./docker/elasticsearch-init/docker-entrypoint.sh:/docker-entrypoint.sh
       - ./src/main/resources/es/_template/place_template_new.json:/mappings/place_template.json
     entrypoint: /docker-entrypoint.sh
     environment:
