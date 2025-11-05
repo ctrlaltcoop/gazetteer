@@ -35,7 +35,7 @@ services:
     container_name: mongodb
     image: mongo:4.0
     volumes:
-      - ./mongo/docker-entrypoint.sh:/docker-entrypoint.sh
+      - ./docker/mongo/docker-entrypoint.sh:/docker-entrypoint.sh
       - ./src/test/resources:/docker-entrypoint-initdb.d/data
     environment:
       MONGO_INITDB_DATABASE: gazetteer
