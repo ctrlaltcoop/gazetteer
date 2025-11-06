@@ -52,7 +52,7 @@ services:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
       - xpack.security.enabled=false
-      # - cluster.name=gazetteer.dainst.org
+      - cluster.name=gazetteer.dainst.org
     ports:
       - 9200:9200
     user: 1000:1000
