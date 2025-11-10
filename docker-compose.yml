@@ -19,7 +19,7 @@ services:
       mongodb:
         condition: service_started
       elasticsearch:
-        condition: service_started
+        condition: service_healthy
       builder:
         condition: service_healthy
         restart: true
@@ -27,6 +27,11 @@ services:
       - ./.tomcat/:/usr/local/tomcat/webapps/
     ports:
       - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-o", "/dev/null", "-s", "--head", "--fail", "localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - gazetteer
 
@@ -56,7 +61,14 @@ services:
       - cluster.name=gazetteer.dainst.org
     ports:
       - 9200:9200
+    healthcheck:
+      test: ["CMD", "curl", "-o", "/dev/null", "-s", "--head", "--fail", "localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     user: 1000:1000
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
     networks:
       - gazetteer
 
@@ -64,13 +76,17 @@ services:
     container_name: gazetteer_elasticsearch_init
     image: elasticsearch:6.7.1
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
+      tomcat:
+        condition: service_healthy
     volumes:
       - ./docker/elasticsearch-init/docker-entrypoint.sh:/docker-entrypoint.sh
       - ./src/main/resources/es/_template/place_template.json:/mappings/place_template.json
     entrypoint: /docker-entrypoint.sh
     environment:
       - ELASTICSEARCH_CONTAINER_NAME=elasticsearch
+      - TOMCAT_CONTAINER_NAME=tomcat
     user: 1000:1000
     networks:
       - gazetteer
