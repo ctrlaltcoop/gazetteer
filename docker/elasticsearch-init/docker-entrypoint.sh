@@ -14,3 +14,6 @@ curl http://$ELASTICSEARCH_CONTAINER_NAME:9200/_template/gazetteer_template -X P
 
 echo "Create the index..."
 curl -X PUT "http://$ELASTICSEARCH_CONTAINER_NAME:9200/gazetteer"
+
+echo "Reindexing…"
+curl -XPOST admin:password@localhost:8080/admin/reindex
