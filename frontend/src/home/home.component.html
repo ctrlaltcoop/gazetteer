@@ -1,0 +1,22 @@
+<div style="margin-top: -220px">
+  <div class="span5" style="margin-left: 80px">
+    <p
+      [dir]="locale === 'ar' ? 'rtl' : null"
+      [lang]="locale === 'ar' ? 'ar' : null"
+      i18n="@@home.info1"
+    >
+      home.info1
+    </p>
+    <a i18n-href="@@home.videoLink" href="home.videoLink">Youtube Screencast</a>
+  </div>
+  <div class="span5">
+    <p
+      [dir]="locale === 'ar' ? 'rtl' : null"
+      [lang]="locale === 'ar' ? 'ar' : null"
+      style="max-width: 1000px; margin: 0 auto; display: block"
+      i18n="@@home.info2"
+    >
+      home.info2
+    </p>
+  </div>
+</div>

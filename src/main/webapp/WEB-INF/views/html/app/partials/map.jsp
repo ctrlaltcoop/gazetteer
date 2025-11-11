@@ -1,1 +1,0 @@
-<div id="leaflet_map"></div>

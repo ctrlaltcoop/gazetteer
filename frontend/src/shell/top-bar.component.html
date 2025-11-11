@@ -1,0 +1,62 @@
+@if (isAnonymous()) {
+  <div class="btn-group pull-right" style="margin-top: 12px">
+    <a
+      href="javascript:window.location.href='../login?r=' + window.location.hash.substring(3);"
+      class="btn btn-small btn-primary"
+      i18n="@@ui.login"
+    >
+      Login
+    </a>
+    <a
+      href="javascript:window.location.href='../register?r=' + window.location.hash.substring(3);"
+      class="btn btn-small btn-primary"
+      i18n="@@ui.register"
+    >
+      Register
+    </a>
+  </div>
+} @else {
+  <div class="btn-group pull-right" style="margin-top: 12px">
+    <button
+      type="button"
+      class="btn btn-primary btn-small dropdown-toggle"
+      data-toggle="dropdown"
+    >
+      {{ username() }}
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu pull-right" role="menu">
+      <li>
+        <a
+          href="javascript:window.location.href='../editUser?username=${pageContext['request'].userPrincipal.name}&r=' + window.location.hash.substring(3);"
+          i18n="@@ui.userSettings"
+        >
+          Settings
+        </a>
+      </li>
+      @if (isEditor()) {
+        <li>
+          <a href="../globalChangeHistory" i18n="@@ui.globalChangeHistory"
+            >Change History</a
+          >
+        </li>
+      }
+      @if (isAdmin()) {
+        <li>
+          <a href="../userManagement" i18n="@@ui.userManagement"
+            >User management</a
+          >
+        </li>
+      }
+      @if (isUser()) {
+        <li>
+          <a href="../recordGroupManagement" i18n="@@ui.recordGroupManagement">
+            Record groups
+          </a>
+        </li>
+      }
+      <li class="divider"></li>
+      <li><a href="../logout" i18n="@@ui.logout">Logout</a></li>
+    </ul>
+  </div>
+}

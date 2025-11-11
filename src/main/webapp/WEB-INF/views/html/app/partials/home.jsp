@@ -28,14 +28,15 @@
 		iDAI.gazetteer
 	</h1>
 	<form class="form-search simpleSearchForm" ng-submit="submit()" style="padding-top:50px;">
+
 		<div class="well" style="display:inline-block; text-align:left;">
 			<div style="position:relative;">
 				<div class="input-append">
 					<s:message code="ui.search.simpleSearch" text="ui.search.simpleSearch"
 							var="titleSimpleSearch" />
-					<input class="search-query input-xxlarge" name="homeSearchField" ng-model="searchFieldInput" placeholder="${titleSimpleSearch}" 
+					<input id="search-field" class="search-query input-xxlarge" name="homeSearchField" ng-model="searchFieldInput" placeholder="${titleSimpleSearch}" 
 							on-arrow-up="selectPreviousSuggestion()" on-arrow-down="selectNextSuggestion()" on-blur="lostFocus()"
-							type="text" autocomplete="off" focus-me="true">
+							type="text" autocomplete="off" focus-me="true">;
 					<button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
 				</div>		
 				<div class="suggestion-menu" ng-show="homeSearchSuggestions">

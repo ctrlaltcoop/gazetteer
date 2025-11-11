@@ -1,0 +1,82 @@
+<div scroll-position="scrollPosition"></div>
+
+<div class="container-fluid">
+  <div class="archaeo-fixed-menu">
+    <div class="gaz-container archaeo-fixed-menu-header">
+      <gz-top-bar />
+      <div id="gaz-logo"></div>
+      <div>
+        <h3 class="pull-left">
+          <small>Deutsches Archäologisches Institut</small> <br />
+          <a href="#" style="color: inherit">iDAI.gazetteer</a>
+        </h3>
+      </div>
+    </div>
+    <gz-menu />
+  </div>
+
+  <div class="gaz-container" name="container">
+    @if (successMessage() === "register") {
+      <div class="alert alert-success" i18n="@@ui.register.success">
+        Registration successfully completed. You will receive an e-mail
+        notification as soon as your account has been activated by an
+        administrator.
+      </div>
+    }
+    @if (successMessage() === "passwordChangeRequest") {
+      <div
+        class="alert alert-success"
+        i18n="@@ui.passwordChangeRequest.success"
+      >
+        Please check your inbox for an e-mail containing the link to reset your
+        password.
+      </div>
+    }
+
+    @if (hasAlerts()) {
+      <div class="alerts" ng-cloak ng-hide="alerts.length == 0">
+        @for (alert of alerts(); track alert.id) {
+          <div class="alert" [class]="alert.alertClass">
+            <button class="close" (click)="closeAlert(alert)">&times;</button>
+            @if (alert.head) {
+              <h4>{{ alert.head }}</h4>
+            }
+            {{ alert.body }}
+          </div>
+        }
+      </div>
+    }
+    @if (showHeader()) {
+      <div class="page-header">
+        <h2>
+          <p
+            [dir]="locale === 'ar' ? 'rtl' : null"
+            [lang]="locale === 'ar' ? 'ar' : null"
+          >
+            <span>{{ title() ?? "&nbsp;" }}</span>
+            <small [innerHTML]="subtitle()"></small>
+          </p>
+        </h2>
+      </div>
+    }
+    <div class="row-fluid" style="position: relative">
+      <div class="span6" id="map-well-wrapper" [style]="mapContainerStyle()">
+        <div class="well-small" id="map-well">
+          <gz-map
+            [places]="activePlaces()"
+            [highlight]="highlight()"
+            [mode]="mapMode()"
+            height="500"
+            (mouseup)="setUpdateMapPropertiesTimer()"
+          />
+        </div>
+      </div>
+
+      <div class="{{ viewClass() }}" ng-view style="min-height: 530px"></div>
+    </div>
+
+    <div class="footer-container">
+      <gz-footer />
+    </div>
+  </div>
+</div>

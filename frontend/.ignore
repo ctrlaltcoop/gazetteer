@@ -1,0 +1,4 @@
+.angular/
+.devenv/
+dist/
+node_modules/

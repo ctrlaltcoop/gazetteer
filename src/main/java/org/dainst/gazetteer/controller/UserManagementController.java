@@ -24,6 +24,7 @@ import org.dainst.gazetteer.domain.User;
 import org.dainst.gazetteer.domain.RecordGroup;
 import org.dainst.gazetteer.domain.UserPasswordChangeRequest;
 import org.dainst.gazetteer.helpers.MailService;
+import org.elasticsearch.common.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,31 +76,33 @@ public class UserManagementController {
 
 	private int usersPerPage = 15;
 
-	@RequestMapping(value="/login")
-	public String getLogin(@RequestParam(required=false) String r, ModelMap model) {
-		if (r != null) model.addAttribute("r", r);
+	@RequestMapping(value = "/login")
+	public String getLogin(@RequestParam(required = false) String r, ModelMap model) {
+		if (r != null)
+			model.addAttribute("r", r);
 		model.addAttribute("version", version);
 		return "login";
 	}
 
-	@RequestMapping(value="/loginfailed")
+	@RequestMapping(value = "/loginfailed")
 	public String loginerror(ModelMap model) {
 		model.addAttribute("error", "true");
 		model.addAttribute("version", version);
 		return "login";
 	}
 
-	@RequestMapping(value="/register")
-	public String register(@RequestParam(required=false) String r, ModelMap model, HttpServletRequest request) {
+	@RequestMapping(value = "/register")
+	public String register(@RequestParam(required = false) String r, ModelMap model, HttpServletRequest request) {
 		Locale locale = new RequestContext(request).getLocale();
 		model.addAttribute("language", locale.getLanguage());
-		if (r != null) model.addAttribute("r", r);
+		if (r != null)
+			model.addAttribute("r", r);
 		model.addAttribute("version", version);
 		return "register";
 	}
 
-	@RequestMapping(value="/checkRegisterForm")
-	public String checkRegisterForm(HttpServletRequest request, @RequestParam(required=false) String r,
+	@RequestMapping(value = "/checkRegisterForm")
+	public String checkRegisterForm(HttpServletRequest request, @RequestParam(required = false) String r,
 			RedirectAttributes redirectAttributes, ModelMap model) {
 
 		String username = request.getParameter("register_username");
@@ -174,8 +177,7 @@ public class UserManagementController {
 
 	@RequestMapping(value = "/redirect")
 	public String redirect(@RequestParam(required = false) String r) {
-
-		if (r == null || r.equals(""))
+		if (Strings.isNullOrEmpty(r))
 			r = "home";
 
 		return "redirect:app/#!/" + r;
@@ -244,74 +246,74 @@ public class UserManagementController {
 					users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "enabled"));
 			} else {
 				switch (sort) {
-				case "username":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.UsernameComparator()));
-					else
-						Collections.sort(users, new User.UsernameComparator());
-					break;
-				case "firstname":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.FirstnameComparator()));
-					else
-						Collections.sort(users, new User.FirstnameComparator());
-					break;
-				case "lastname":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.LastnameComparator()));
-					else
-						Collections.sort(users, new User.LastnameComparator());
-					break;
-				case "institution":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.InstitutionComparator()));
-					else
-						Collections.sort(users, new User.InstitutionComparator());
-					break;
-				case "email":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.EmailComparator()));
-					else
-						Collections.sort(users, new User.EmailComparator());
-					break;
-				case "lastLogin":
-					if (isDescending)
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "lastLogin"));
-					else
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "lastLogin"));
-					break;
-				case "registrationDate":
-					if (isDescending)
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "registrationDate"));
-					else
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "registrationDate"));
-					break;
-				case "admin":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.AdminComparator()));
-					else
-						Collections.sort(users, new User.AdminComparator());
-					break;
-				case "editor":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.EditorComparator()));
-					else
-						Collections.sort(users, new User.EditorComparator());
-					break;
-				case "reisestipendium":
-					users = (List<User>) userDao.findAll();
-					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.ReisestipendiumComparator()));
-					else
-						Collections.sort(users, new User.ReisestipendiumComparator());
-					break;
+					case "username":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.UsernameComparator()));
+						else
+							Collections.sort(users, new User.UsernameComparator());
+						break;
+					case "firstname":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.FirstnameComparator()));
+						else
+							Collections.sort(users, new User.FirstnameComparator());
+						break;
+					case "lastname":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.LastnameComparator()));
+						else
+							Collections.sort(users, new User.LastnameComparator());
+						break;
+					case "institution":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.InstitutionComparator()));
+						else
+							Collections.sort(users, new User.InstitutionComparator());
+						break;
+					case "email":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.EmailComparator()));
+						else
+							Collections.sort(users, new User.EmailComparator());
+						break;
+					case "lastLogin":
+						if (isDescending)
+							users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "lastLogin"));
+						else
+							users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "lastLogin"));
+						break;
+					case "registrationDate":
+						if (isDescending)
+							users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "registrationDate"));
+						else
+							users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "registrationDate"));
+						break;
+					case "admin":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.AdminComparator()));
+						else
+							Collections.sort(users, new User.AdminComparator());
+						break;
+					case "editor":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.EditorComparator()));
+						else
+							Collections.sort(users, new User.EditorComparator());
+						break;
+					case "reisestipendium":
+						users = (List<User>) userDao.findAll();
+						if (isDescending)
+							Collections.sort(users, Collections.reverseOrder(new User.ReisestipendiumComparator()));
+						else
+							Collections.sort(users, new User.ReisestipendiumComparator());
+						break;
 				}
 			}
 

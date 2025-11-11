@@ -1,0 +1,37 @@
+<hr />
+<footer>
+  <div class="dai-footer-logo">
+    <a href="http://www.dainst.org/">
+      <img
+        src="/images/logo_dai.png"
+        alt="Deutsches Archäologisches Institut"
+      />
+    </a>
+  </div>
+  <p
+    [dir]="locale === 'ar' ? 'rtl' : null"
+    [lang]="locale === 'ar' ? 'ar' : null"
+  >
+    <a
+      href="https://www.dainst.org/de/datenschutz"
+      target="_blank"
+      i18n="@@ui.policy"
+      >Privacy Policyy</a
+    >
+    <br />
+    <ng-container i18n="@@ui.license">
+      The content on this website is lincensed under
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+        >CC-BY</a
+      >.
+    </ng-container>
+    <br />
+    <ng-container i18n="@@ui.mailingList">
+    For suggestions and corrections regarding the content feel free to contact <a href="mailto:idai.gazetteer@dainst.de">idai.gazetteer@dainst.de</a>.
+    </ng-container>
+    <br />
+    <small
+      ><em>Version: {{ version }}</em></small
+    >
+  </p>
+</footer>

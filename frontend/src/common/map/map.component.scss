@@ -1,0 +1,36 @@
+.map__container {
+  height: 500px;
+}
+
+.map__container .leaflet-div-icon {
+  background: none;
+  border: none;
+}
+
+.map__container .standardMarker {
+  fill: red;
+}
+
+.map__container .childMarker {
+  fill: rgb(19, 255, 0);
+}
+
+.map__container .gazShape {
+  stroke: black;
+  stroke-width: 1px;
+  fill: black;
+  fill-opacity: 0.3;
+}
+
+.map__container .gazShape.parent {
+  fill-opacity: 0.1;
+}
+
+.map__container .standardMarker.highlight,
+.map__container .standardMarker:hover,
+.map__container .gazShape.highlight,
+.map__container .gazShape:hover,
+.map__container .childMarker:hover {
+  fill: yellow;
+  stroke: yellow
+}

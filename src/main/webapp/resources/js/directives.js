@@ -185,15 +185,6 @@ directives.directive('gazTagField', function($document) {
 				$scope.textFieldPos -= $scope.containerPos;
 			});
 			
-			$scope.addTag = function() {
-				var newTag = $scope.inputText.replace(",", "").replace(";", "").trim();
-				if (newTag != "" && !$scope.searchInList(newTag)) {
-					if ($scope.tags == undefined || $scope.tags == null)
-						$scope.tags = [];
-					$scope.tags.push(newTag);
-				}
-				$scope.inputText = "";
-			};
 			
 			$scope.removeTag = function(tagToRemove) {
 				for (var i = 0; i < $scope.tags.length; i++) {
@@ -251,28 +242,7 @@ directives.directive('gazTagField', function($document) {
 			$scope.setSelectedSuggestionIndex = function(index) {
 				$scope.selectedSuggestionIndex = index;
 			};
-			
-			$scope.selectPreviousSuggestion = function() {
-				if ($scope.suggestions.length > 0) {
-					$scope.selectedSuggestionIndex -= 1;
-					if ($scope.selectedSuggestionIndex < 0)
-						$scope.selectedSuggestionIndex = $scope.suggestions.length - 1;
-				}
-			};
-			
-			$scope.selectNextSuggestion = function() {
-				if ($scope.suggestions.length > 0) {
-					$scope.selectedSuggestionIndex += 1;
-					if ($scope.selectedSuggestionIndex >= $scope.suggestions.length)
-						$scope.selectedSuggestionIndex = 0;
-				}
-			};
-			
-			$scope.lostFocus = function() {
-				if ($scope.inputText != "")
-					$scope.addTag();
-				$scope.suggestions = [];
-			};
+				
 		}
 	};
 });
@@ -318,142 +288,6 @@ directives.directive('gazLocationPicker', function($document, $timeout, MapTypeS
 		}
 	};
 });
-
-directives.directive('gazMap', function($location, Place) {
-	
-	var getMarkerSVG = function(type) {
-		return `<svg version="1.1" class="${type}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 365 560" xml:space="preserve"><g><path d="M182.9,551.7c0,0.1,0.2,0.3,0.2,0.3S358.3,283,358.3,194.6c0-130.1-88.8-186.7-175.4-186.9   C96.3,7.9,7.5,64.5,7.5,194.6c0,88.4,175.3,357.4,175.3,357.4S182.9,551.7,182.9,551.7z M122.2,187.2c0-33.6,27.2-60.8,60.8-60.8   c33.6,0,60.8,27.2,60.8,60.8S216.5,248,182.9,248C149.4,248,122.2,220.8,122.2,187.2z"/></g></svg>`;
-	};
-
-
-	var defaultIcon =  L.divIcon({
-		iconSize: [12, 18],
-		iconAnchor: [6, 18],
-	    html: getMarkerSVG("standardMarker")   
-    })
- 
-	var childIcon =  L.divIcon({
-		iconSize: [12, 18],
-		iconAnchor: [6, 18],
-	    html: getMarkerSVG("childMarker")   
-    })
-	
-	var baseUri = $location.absUrl().substring(0, $location.absUrl().indexOf("app"));
-	
-	return {
-		replace: true,
-		scope: {
-			places: "=",
-			zoom: "=",
-			bbox: "=",
-			highlight: "=",
-			map: "=",
-			height: "@",
-			mode: "="
-		},
-		templateUrl: 'partials/map.html',
-		controller: function($scope, $attrs, $element) {
-			
-			var map = L.map('leaflet_map').fitWorld();
-			
-			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			    maxZoom: 19,
-			    minZoom: 2,
-			    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-			}).addTo(map); 
-
-			var markersAndShapeLayer = L.featureGroup([]).addTo(map);
-
-			$scope.markerClick = function(e) {
-				$location.path(`/show/${e.sourceTarget.options.gazId}`);
-			}; 
-			
-			$scope.$watch("highlight", function() {
-				var layers = markersAndShapeLayer.getLayers();
-				for (var i in layers){
-					if($scope.highlight !== null && layers[i].options.gazId === $scope.highlight.id) {
-						// Highlight shape or icon.
-						if(layers[i]._icon){
-							layers[i]._icon.children[0].classList.add("highlight") 
-						} else {
-							layers[i]._path.classList.add("highlight") 
-						}
-					} else {
-						// Remove highlight from every other shape or icon.
-						if(layers[i]._icon){
-							layers[i]._icon.children[0].classList.remove("highlight") 
-						} else {
-							layers[i]._path.classList.remove("highlight") 
-						}
-					}
-				}
-			});
-			
-			// add markers/shapes for locations and auto zoom and center map
-			$scope.$watch("places", function() {
-				markersAndShapeLayer.clearLayers();
-
-				for (var i in $scope.places) {
-					var place = $scope.places[i];
-
-					if (place.prefLocation) {
-						 if (place.prefLocation.coordinates && place.mapType != "polygonParent" && place.mapType != "mainPolygon"
-								&& (place.prefLocation.shape == null || place.mapType == "polygonAndMarker") && place.mapType !== "markerChildInvisible") {
-							var icon;
-							
-							if (place.mapType === "markerChild") {
-								icon = childIcon
-							} else {
-								icon = defaultIcon;
-							}
-							
-							var marker = L.marker(
-								[place.prefLocation.coordinates[1], place.prefLocation.coordinates[0]],
-								{icon: icon, gazId: place.gazId}
-								)
-
-							markersAndShapeLayer.addLayer(marker);
-						}
-						
-						if (place.prefLocation.shape && place.mapType !== "markerChildInvisible") {
-							var shape = place.prefLocation.shape;
-							var shapeCoordinates = [];
-							var counter = 0;
-							
-							var shapeCoordinates = []
-							for (var j = 0; j < shape.length; j++) {
-								for (var k = 0; k < shape[j].length; k++) {
-									var shapePolygonCoordinates = [];
-									for (var l = 0; l < shape[j][k].length; l++)
-										shapePolygonCoordinates[l] = L.latLng(shape[j][k][l][1], shape[j][k][l][0]);
-									shapeCoordinates[counter] = shapePolygonCoordinates;
-									counter++;
-								}
-							}
-							
-							var className = "gazShape";
-							if(place["mapType"] == "markerChild") 
-								className = className + " highlight";
-							else if(place["mapType"] == "polygonParent")
-								className = className + " parent";
-							
-
-							var polygon = L.polygon(shapeCoordinates, {gazId: place.gazId, className: className}).on('click', $scope.markerClick);
-							markersAndShapeLayer.addLayer(polygon);
-						}
-					}
-				}
-			
-				if(markersAndShapeLayer.getLayers().length > 0) {
-					map.fitBounds(markersAndShapeLayer.getBounds());
-				} else {
-					map.fitWorld()
-					map.setZoom(2)
-				}
-			});
-		}
-	};	
-});	
 
 directives.directive('focusMe', function($timeout, $parse) {
   return {
