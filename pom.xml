@@ -9,7 +9,7 @@
 	<version>2.9.9</version>
 	<properties>
 		<java-version>21</java-version>
-		<org.springframework-version>5.2.3.RELEASE</org.springframework-version>
+		<org.springframework-version>6.0.23</org.springframework-version>
 		<org.aspectj-version>1.6.11</org.aspectj-version>
 		<org.log4j-version>2.16.0</org.log4j-version>
 		<org.slf4j-version>1.7.32</org.slf4j-version>
@@ -73,7 +73,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${org.springframework-version}</version>
 			<exclusions>
 				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
@@ -117,22 +116,22 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>5.1.11.RELEASE</version>
+			<version>5.3.13.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>5.2.10.RELEASE</version>
+			<version>5.3.13.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>5.1.5.RELEASE</version>
+			<version>5.3.13.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>5.1.5.RELEASE</version>
+			<version>5.3.13.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.annotation</groupId>
@@ -153,6 +152,11 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>5.4.4</version>
 		</dependency>
 
 		<!-- Jersey -->

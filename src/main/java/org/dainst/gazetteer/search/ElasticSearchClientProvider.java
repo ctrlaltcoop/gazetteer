@@ -1,6 +1,6 @@
 package org.dainst.gazetteer.search;
 
-import org.apache.http.HttpHost;
+import org.apache.hc.core5.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +22,7 @@ public class ElasticSearchClientProvider {
 	private RestHighLevelClient createClient() {
 		
 		return new RestHighLevelClient(
-			RestClient.builder(new HttpHost("elasticsearch", 9200, "http"))
+			RestClient.builder(new HttpHost("http", "elasticsearch", 9200))
 		);
 	}
 }
