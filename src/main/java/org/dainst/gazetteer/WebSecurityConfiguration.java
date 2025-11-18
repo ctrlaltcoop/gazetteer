@@ -1,4 +1,5 @@
 package org.dainst.gazetteer;
+import jakarta.servlet.DispatcherType;
 import org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository;
 import org.dainst.gazetteer.dao.UserRepository;
 import org.dainst.gazetteer.helpers.AuthenticationSuccessHandler;
@@ -16,6 +17,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.filter.DelegatingFilterProxy;
+
+import java.util.EnumSet;
 
 
 @Configuration
@@ -71,19 +74,19 @@ public class WebSecurityConfiguration {
                         .successHandler(authenticationSuccessHandler)
             ).authorizeHttpRequests( httpRequest ->
                 httpRequest
-                    .requestMatchers("/user").hasRole("ROLE_USER")
-                    .requestMatchers(HttpMethod.POST, "/doc/**").hasRole("ROLE_EDITOR")
-                    .requestMatchers(HttpMethod.PUT, "/doc/**").hasRole("ROLE_EDITOR")
-                    .requestMatchers(HttpMethod.DELETE, "/doc/**").hasRole("ROLE_EDITOR")
-                    .requestMatchers(HttpMethod.POST, "/merge/**").hasRole("ROLE_EDITOR")
-                    .requestMatchers(HttpMethod.POST, "/duplicate/**").hasRole("ROLE_EDITOR")
-                    .requestMatchers(HttpMethod.POST, "/validation/**").hasRole("ROLE_EDITOR")
-                    .requestMatchers("/admin/**").hasRole("ROLE_ADMIN")
-                    .requestMatchers("/userManagement/**").hasRole("ROLE_ADMIN")
-                    .requestMatchers("/recordGroupManagement/**").hasRole("ROLE_USER")
-                    .requestMatchers("/recordGroupUserManagement/**").hasRole("ROLE_USER")
-                    .requestMatchers("/editUser/**").hasRole("ROLE_USER")
-                    .requestMatchers("/globalChangeHistory/**").hasRole("ROLE_EDITOR")
+                    .requestMatchers("/user").hasRole("USER")
+                    .requestMatchers(HttpMethod.POST, "/doc/**").hasRole("EDITOR")
+                    .requestMatchers(HttpMethod.PUT, "/doc/**").hasRole("EDITOR")
+                    .requestMatchers(HttpMethod.DELETE, "/doc/**").hasRole("EDITOR")
+                    .requestMatchers(HttpMethod.POST, "/merge/**").hasRole("EDITOR")
+                    .requestMatchers(HttpMethod.POST, "/duplicate/**").hasRole("EDITOR")
+                    .requestMatchers(HttpMethod.POST, "/validation/**").hasRole("EDITOR")
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/userManagement/**").hasRole("ADMIN")
+                    .requestMatchers("/recordGroupManagement/**").hasRole("USER")
+                    .requestMatchers("/recordGroupUserManagement/**").hasRole("USER")
+                    .requestMatchers("/editUser/**").hasRole("USER")
+                    .requestMatchers("/globalChangeHistory/**").hasRole("EDITOR")
             )
             .addFilter(new DelegatingFilterProxy())
             // TODO move to DSL?!
