@@ -8,10 +8,10 @@ import org.dainst.gazetteer.helpers.SimpleMerger;
 import org.dainst.gazetteer.helpers.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.WriteResultChecking;
-import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,20 +20,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoClients;
 
 
 @Configuration
-@EnableReactiveMongoRepositories(basePackages = "org.dainst.gazetteer.dao")
+@EnableMongoRepositories(basePackages = "org.dainst.gazetteer.dao")
 @EnableWebSecurity
-public class MongoConfiguration 
-  extends AbstractReactiveMongoConfiguration {
+public class MongoConfiguration extends AbstractMongoConfiguration {
 
     // region mongo
     @Bean
     public MongoClient mongoClient() {
-        return MongoClients.create();
+        return new MongoClient();
     }
 
     @Override

@@ -3,7 +3,6 @@ package org.dainst.gazetteer.controller;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -19,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.annotation.Resource;
 
 @Controller
 public class PlaceController {
