@@ -19,7 +19,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Bean
     public MongoClient mongoClient() {
-        return new MongoClient();
+        return new MongoClient("mongodb");
     }
 
     @Override
