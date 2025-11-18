@@ -1,23 +1,19 @@
 package org.dainst.gazetteer;
 import org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository;
 import org.dainst.gazetteer.dao.UserRepository;
-import org.dainst.gazetteer.domain.User;
 import org.dainst.gazetteer.helpers.AuthenticationSuccessHandler;
 import org.dainst.gazetteer.helpers.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
@@ -62,8 +58,7 @@ public class WebSecurityConfiguration {
         HttpSecurity http,
         AuthenticationSuccessHandler authenticationSuccessHandler
     ) throws Exception {
-        http.csrf(csrf ->
-                csrf.disable()
+        http.csrf(AbstractHttpConfigurer::disable
         )
             .logout(logout ->
                  logout.logoutUrl("/logout")
@@ -92,7 +87,7 @@ public class WebSecurityConfiguration {
             )
             .addFilter(new DelegatingFilterProxy())
             // TODO move to DSL?!
-            .httpBasic();
+            .httpBasic(Customizer.withDefaults());
           
         return http.build();
     }
