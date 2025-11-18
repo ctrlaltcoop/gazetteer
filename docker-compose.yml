@@ -14,7 +14,7 @@ services:
 
   tomcat:
     container_name: tomcat
-    image: tomcat:9.0-jdk11
+    image: tomcat:10-jdk21
     depends_on:
       mongodb:
         condition: service_started
