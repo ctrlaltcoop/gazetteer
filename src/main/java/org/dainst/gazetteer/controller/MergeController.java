@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.dainst.gazetteer.converter.JsonPlaceSerializer;
 import org.dainst.gazetteer.dao.GroupRoleRepository;

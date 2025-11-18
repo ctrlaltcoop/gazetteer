@@ -12,8 +12,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.dainst.gazetteer.dao.GroupRoleRepository;
 import org.dainst.gazetteer.dao.RecordGroupRepository;

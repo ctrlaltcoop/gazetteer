@@ -2,8 +2,8 @@ package org.dainst.gazetteer.helpers;
 
 import java.util.Properties;
 
-import javax.mail.*;
-import javax.mail.internet.*;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

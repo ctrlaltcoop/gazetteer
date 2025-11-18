@@ -2,7 +2,7 @@ package org.dainst.gazetteer.controller;
 
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.dainst.gazetteer.dao.HelpTextRepository;
 import org.dainst.gazetteer.domain.HelpText;
