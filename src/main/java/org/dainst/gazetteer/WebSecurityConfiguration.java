@@ -57,7 +57,7 @@ public class WebSecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain springSecurityFilterChain(
+    public SecurityFilterChain securityFilterChain(
         HttpSecurity http,
         AuthenticationSuccessHandler authenticationSuccessHandler
     ) throws Exception {
@@ -88,7 +88,7 @@ public class WebSecurityConfiguration {
                     .requestMatchers("/editUser/**").hasRole("USER")
                     .requestMatchers("/globalChangeHistory/**").hasRole("EDITOR")
             )
-            .addFilter(new DelegatingFilterProxy())
+            // TODO remove or what to do?!.addFilter(new DelegatingFilterProxy())
             // TODO move to DSL?!
             .httpBasic(Customizer.withDefaults());
           
