@@ -52,6 +52,7 @@
 	</context-param>
 	
 	<!-- Filters for spring security -->
+	<!-- Exclude spring security as defined in config
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -61,6 +62,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	-->
 	
 	<!-- Convert http messages to GET on FORWARD in order to prevent problems with PUT and
 		 DELETE requests on JSP pages -->
