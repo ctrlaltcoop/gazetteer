@@ -1,4 +1,4 @@
-package org.dainst.gazetteer;
+package org.dainst.gazetteer.configuration;
 import org.dainst.gazetteer.dao.PlaceRepository;
 import org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator;
 import org.dainst.gazetteer.helpers.SimpleMerger;

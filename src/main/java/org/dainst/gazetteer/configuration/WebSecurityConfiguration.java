@@ -1,25 +1,21 @@
-package org.dainst.gazetteer;
-import jakarta.servlet.DispatcherType;
+package org.dainst.gazetteer.configuration;
 import org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository;
 import org.dainst.gazetteer.dao.UserRepository;
 import org.dainst.gazetteer.helpers.AuthenticationSuccessHandler;
 import org.dainst.gazetteer.helpers.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.filter.DelegatingFilterProxy;
-
-import java.util.EnumSet;
-
 
 @Configuration
 @EnableWebSecurity
@@ -36,28 +32,34 @@ public class WebSecurityConfiguration {
         authenticationSuccessHandler.setUserPasswordChangeRequestRepository(userPasswordChangeRequestRepository);
         return authenticationSuccessHandler;
     }
-    @Bean
-    public UserService userService(UserRepository userRepository) {
-        UserService userService = new UserService();
-        userService.setUserRepository(userRepository);
-        return userService;
-    }
 
     @Bean 
     public PasswordEncoder passwordEncoder() { 
         return new BCryptPasswordEncoder(); 
     }
 
-    @Autowired
-    UserService userService;
- 
-    @Autowired
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+    @Bean
+    public UserDetailsService userDetailsService(UserRepository userRepository) {
+        UserService userService = new UserService();
+        userService.setUserRepository(userRepository);
+        return userService;
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(
+    public AuthenticationManager authenticationManager(
+            HttpSecurity http,
+            PasswordEncoder bCryptPasswordEncoder,
+            UserDetailsService userDetailsService
+    ) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder
+          .userDetailsService(userDetailsService)
+          .passwordEncoder(bCryptPasswordEncoder);
+        return authenticationManagerBuilder.build();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(
         HttpSecurity http,
         AuthenticationSuccessHandler authenticationSuccessHandler
     ) throws Exception {
@@ -87,6 +89,8 @@ public class WebSecurityConfiguration {
                     .requestMatchers("/recordGroupUserManagement/**").hasRole("USER")
                     .requestMatchers("/editUser/**").hasRole("USER")
                     .requestMatchers("/globalChangeHistory/**").hasRole("EDITOR")
+                    .requestMatchers("/*").permitAll()
+                    .anyRequest().permitAll()
             )
             // TODO remove or what to do?!.addFilter(new DelegatingFilterProxy())
             // TODO move to DSL?!
