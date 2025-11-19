@@ -445,7 +445,7 @@ public class SearchController {
 	public Map<String, List<String>> getHeatmapCoordinates() {
 
 		List<Place> places = placeDao.findHeatmapPlaces(0,
-				new PageRequest(0, 5000, new Sort(Direction.DESC, "children")));
+				PageRequest.of(0, 5000, Sort.by(Direction.DESC, "children")));
 
 		List<String> heatmapCoordinates = new ArrayList<String>();
 

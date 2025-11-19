@@ -87,7 +87,7 @@ public class AdminController {
 			int pagesCount = (int) Math.ceil((float) placeDao.count() / pageSize);
 			
 			do {
-				List<Place> places = placeDao.findAll(new PageRequest(page, pageSize)).getContent();
+				List<Place> places = placeDao.findAll(PageRequest.of(page, pageSize)).getContent();
 				indexer.index(places);
 				page++;
 				logger.info("Reindexing progress: " + page + "/" + pagesCount);
@@ -224,7 +224,7 @@ public class AdminController {
 		
 		long time = System.currentTimeMillis();
 		
-		List<Place> places = placeDao.findByTypesAndDeletedIsFalse("continent",new Sort("prefName"));
+		List<Place> places = placeDao.findByTypesAndDeletedIsFalse("continent",Sort.by("prefName"));
 		
 		for (Place place : places) {
 			try {

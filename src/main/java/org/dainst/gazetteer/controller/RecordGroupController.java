@@ -69,7 +69,7 @@ public class RecordGroupController {
 		List<RecordGroup> recordGroups = null;
 		Map<String, String> groupRights = new HashMap<String, String>();
 		if (isAdminEdit()) {
-			recordGroups = (List<RecordGroup>) recordGroupDao.findAll(new Sort(Sort.Direction.ASC, "creationDate"));
+			recordGroups = (List<RecordGroup>) recordGroupDao.findAll(Sort.by(Sort.Direction.ASC, "creationDate"));
 			for (RecordGroup group : recordGroups) {
 				groupRights.put(group.getId(), "admin");
 			}

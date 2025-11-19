@@ -1,25 +1,27 @@
 package org.dainst.gazetteer.configuration;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
 import org.dainst.gazetteer.dao.PlaceRepository;
 import org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator;
 import org.dainst.gazetteer.helpers.SimpleMerger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.WriteResultChecking;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
 
 
 @Configuration
 @EnableMongoRepositories(basePackages = "org.dainst.gazetteer.dao")
 @EnableWebSecurity
-public class MongoConfiguration extends AbstractMongoConfiguration {
+public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
-    @Bean
-    public MongoClient mongoClient() {
-        return new MongoClient("mongodb");
+    @Override
+    protected void configureClientSettings(MongoClientSettings.Builder builder) {
+        builder.applyConnectionString(new ConnectionString("mongodb://mongodb"));
     }
 
     @Override

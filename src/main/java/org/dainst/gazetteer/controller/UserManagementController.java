@@ -239,78 +239,78 @@ public class UserManagementController {
 
 			if (sort == null || sort.equals("")) {
 				if (isDescending)
-					users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "enabled"));
+					users = (List<User>) userDao.findAll(Sort.by(Sort.Direction.DESC, "enabled"));
 				else
-					users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "enabled"));
+					users = (List<User>) userDao.findAll(Sort.by(Sort.Direction.ASC, "enabled"));
 			} else {
 				switch (sort) {
 				case "username":
-					users = (List<User>) userDao.findAll();
+					users = (List<User>) userDao.findAll(Sort.unsorted());
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.UsernameComparator()));
+						users.sort(Collections.reverseOrder(new User.UsernameComparator()));
 					else
-						Collections.sort(users, new User.UsernameComparator());
+						users.sort(new User.UsernameComparator());
 					break;
 				case "firstname":
-					users = (List<User>) userDao.findAll();
+					users = (List<User>) userDao.findAll(Sort.unsorted());
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.FirstnameComparator()));
+						users.sort(Collections.reverseOrder(new User.FirstnameComparator()));
 					else
-						Collections.sort(users, new User.FirstnameComparator());
+						users.sort(new User.FirstnameComparator());
 					break;
 				case "lastname":
-					users = (List<User>) userDao.findAll();
+					users = (List<User>) userDao.findAll(Sort.unsorted());
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.LastnameComparator()));
+						users.sort(Collections.reverseOrder(new User.LastnameComparator()));
 					else
-						Collections.sort(users, new User.LastnameComparator());
+						users.sort(new User.LastnameComparator());
 					break;
 				case "institution":
-					users = (List<User>) userDao.findAll();
+					users = (List<User>) userDao.findAll(Sort.unsorted());
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.InstitutionComparator()));
+						users.sort(Collections.reverseOrder(new User.InstitutionComparator()));
 					else
-						Collections.sort(users, new User.InstitutionComparator());
+						users.sort(new User.InstitutionComparator());
 					break;
 				case "email":
-					users = (List<User>) userDao.findAll();
+					users = (List<User>) userDao.findAll(Sort.unsorted());
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.EmailComparator()));
+						users.sort(Collections.reverseOrder(new User.EmailComparator()));
 					else
-						Collections.sort(users, new User.EmailComparator());
+						users.sort(new User.EmailComparator());
 					break;
 				case "lastLogin":
 					if (isDescending)
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "lastLogin"));
+						users = (List<User>) userDao.findAll(Sort.by(Sort.Direction.ASC, "lastLogin"));
 					else
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "lastLogin"));
+						users = (List<User>) userDao.findAll(Sort.by(Sort.Direction.DESC, "lastLogin"));
 					break;
 				case "registrationDate":
 					if (isDescending)
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.ASC, "registrationDate"));
+						users = (List<User>) userDao.findAll(Sort.by(Sort.Direction.ASC, "registrationDate"));
 					else
-						users = (List<User>) userDao.findAll(new Sort(Sort.Direction.DESC, "registrationDate"));
+						users = (List<User>) userDao.findAll(Sort.by(Sort.Direction.DESC, "registrationDate"));
 					break;
 				case "admin":
 					users = (List<User>) userDao.findAll();
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.AdminComparator()));
+						users.sort(Collections.reverseOrder(new User.AdminComparator()));
 					else
-						Collections.sort(users, new User.AdminComparator());
+						users.sort(new User.AdminComparator());
 					break;
 				case "editor":
 					users = (List<User>) userDao.findAll();
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.EditorComparator()));
+						users.sort(Collections.reverseOrder(new User.EditorComparator()));
 					else
-						Collections.sort(users, new User.EditorComparator());
+						users.sort(new User.EditorComparator());
 					break;
 				case "reisestipendium":
 					users = (List<User>) userDao.findAll();
 					if (isDescending)
-						Collections.sort(users, Collections.reverseOrder(new User.ReisestipendiumComparator()));
+						users.sort(Collections.reverseOrder(new User.ReisestipendiumComparator()));
 					else
-						Collections.sort(users, new User.ReisestipendiumComparator());
+						users.sort(new User.ReisestipendiumComparator());
 					break;
 				}
 			}
