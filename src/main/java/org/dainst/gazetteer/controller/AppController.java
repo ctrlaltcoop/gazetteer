@@ -64,7 +64,7 @@ public class AppController {
 	public String app(
 			ModelMap model,
 			HttpServletRequest request,
-			@RequestParam(name="fragment", value="_escaped_fragment_", required=false) String fragment
+			@RequestParam(value="_escaped_fragment_", required=false) String fragment
     ) throws UnsupportedEncodingException {
 		// render static html for crawlers
 		if (fragment != null && !fragment.isEmpty() && fragment.startsWith("/show")) {

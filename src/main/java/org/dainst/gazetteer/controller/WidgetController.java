@@ -43,7 +43,7 @@ public class WidgetController {
 	@RequestMapping(value="/widget/show.js")
 	public ModelAndView showPlace(
 			@RequestParam(name="callback") String callback,
-			@RequestParam(name="ids", required=false, value="id") String[] ids,
+			@RequestParam(required=false, value="id") String[] ids,
 			@RequestParam(name="mapHeight", defaultValue="150") int mapHeight,
 			@RequestParam(name="showInfo", defaultValue="false") boolean showInfo) {
 		
@@ -71,7 +71,7 @@ public class WidgetController {
 			@RequestParam(name="callback") String callback,
 			@RequestParam(name="name", required=false) String name,
 			@RequestParam(name="id", required=false) String id,
-			@RequestParam(name="cssClass", required=false, value="class") String cssClass,
+			@RequestParam(required=false, value="class") String cssClass,
 			@RequestParam(name="value", required=false) String value,
 			@RequestParam(name="disabled", defaultValue="false") boolean disabled) {
 		
