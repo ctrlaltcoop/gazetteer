@@ -63,9 +63,10 @@ public class RecordGroupController {
 	
 	
 	@RequestMapping(value="/recordGroupManagement")
-	public String getRecordGroupManagement(@RequestParam(required=false) String deleteRecordGroupId,
-			ModelMap model, HttpServletRequest request) {
-		
+	public String getRecordGroupManagement(
+            @RequestParam(name="deleteRecordGroupId", required=false) String deleteRecordGroupId,
+			ModelMap model, HttpServletRequest request
+    ) {
 		List<RecordGroup> recordGroups = null;
 		Map<String, String> groupRights = new HashMap<String, String>();
 		if (isAdminEdit()) {
@@ -143,10 +144,14 @@ public class RecordGroupController {
 	}
 	
 	@RequestMapping(value="/recordGroupUserManagement")
-	public String getRecordGroupUserManagement(@RequestParam(required=true) String groupId, @RequestParam(required=false) String sort,
-			@RequestParam(required=false) boolean isDescending, @RequestParam(required=false) Integer page,
-			ModelMap model, HttpServletRequest request) {
-
+	public String getRecordGroupUserManagement(
+            @RequestParam(name="groupId") String groupId,
+            @RequestParam(name="sort", required=false) String sort,
+			@RequestParam(name="isDescending", required=false) boolean isDescending,
+            @RequestParam(name="page", required=false) Integer page,
+			ModelMap model,
+            HttpServletRequest request
+    ) {
 		if (!checkGroupUserManagementAccess(groupId))
 			return "redirect:app/#!/home";
 		
@@ -232,10 +237,15 @@ public class RecordGroupController {
 	}
 	
 	@RequestMapping(value="/checkRecordGroupUserForm")
-	public String checkRecordGroupUserForm(HttpServletRequest request, @RequestParam(required=true) String groupId,
-			@RequestParam(required=true) String userId, @RequestParam(required=false) String sort,
-			@RequestParam(required=false) boolean isDescending, @RequestParam(required=false) Integer page , ModelMap model) {
-		
+	public String checkRecordGroupUserForm(
+            HttpServletRequest request,
+            @RequestParam(name="groupId") String groupId,
+			@RequestParam(name="userId") String userId,
+            @RequestParam(name="sort", required=false) String sort,
+			@RequestParam(name="isDescending", required=false) boolean isDescending,
+            @RequestParam(name="page", required=false) Integer page,
+            ModelMap model
+    ) {
 		if (!checkGroupUserManagementAccess(groupId))
 			return "redirect:app/#!/home";
 		
@@ -256,9 +266,14 @@ public class RecordGroupController {
 	}
 	
 	@RequestMapping(value="/checkAddUserToGroupForm")
-	public String checkAddUserToGroupForm(HttpServletRequest request, @RequestParam(required=true) String groupId, @RequestParam(required=false) String sort,
-			@RequestParam(required=false) boolean isDescending, @RequestParam(required=false) Integer page, ModelMap model) {
-	
+	public String checkAddUserToGroupForm(
+            HttpServletRequest request,
+            @RequestParam(name="groupId") String groupId,
+            @RequestParam(name="sort", required=false) String sort,
+			@RequestParam(name="isDescending", required=false) boolean isDescending,
+            @RequestParam(name="page", required=false) Integer page,
+            ModelMap model
+    ) {
 		if (!checkGroupUserManagementAccess(groupId))
 			return "redirect:app/#!/home";
 		
@@ -299,10 +314,15 @@ public class RecordGroupController {
 	}
 	
 	@RequestMapping(value="/removeUserFromGroup")
-	public String removeUserFromGroup(@RequestParam(required=true) String groupId, @RequestParam(required=true) String userId, @RequestParam(required=false) String sort,
-			@RequestParam(required=false) boolean isDescending, @RequestParam(required=false) Integer page, ModelMap model,
-			HttpServletRequest request) {
-		
+	public String removeUserFromGroup(
+            @RequestParam(name="groupId") String groupId,
+            @RequestParam(name="userId") String userId,
+            @RequestParam(name="sort", required=false) String sort,
+			@RequestParam(name="isDescending", required=false) boolean isDescending,
+            @RequestParam(name="page", required=false) Integer page,
+            ModelMap model,
+			HttpServletRequest request
+    ) {
 		if (!checkGroupUserManagementAccess(groupId))
 			return "redirect:app/#!/home";
 		
@@ -320,10 +340,15 @@ public class RecordGroupController {
 	}
 	
 	@RequestMapping(value="/changeGroupPlaceVisibilityMode")
-	public String changeGroupPlaceVisibilityMode(@RequestParam(required=true) String groupId, @RequestParam(required=true) boolean showPlaces, @RequestParam(required=false) String sort,
-			@RequestParam(required=false) boolean isDescending, @RequestParam(required=false) Integer page, ModelMap model,
-			HttpServletRequest request) {
-		
+	public String changeGroupPlaceVisibilityMode(
+            @RequestParam(name="groupId") String groupId,
+            @RequestParam(name="showPlaces") boolean showPlaces,
+            @RequestParam(name="sort", required=false) String sort,
+			@RequestParam(name="isDescending", required=false) boolean isDescending,
+            @RequestParam(name="page", required=false) Integer page,
+            ModelMap model,
+			HttpServletRequest request
+    ) {
 		if (!checkGroupUserManagementAccess(groupId))
 			return "redirect:app/#!/home";
 		
@@ -339,9 +364,11 @@ public class RecordGroupController {
 	}
 	
 	@RequestMapping(value="/sendRecordGroupContactMail", method=RequestMethod.POST)
-	public void sendRecordGroupContactMail(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(required=true) String groupId) {
-		
+	public void sendRecordGroupContactMail(
+            HttpServletRequest request,
+            HttpServletResponse response,
+			@RequestParam(name="groupId", required=true) String groupId
+    ) {
 		RecordGroup group = recordGroupDao.findById(groupId).orElse(null);
 		if (group == null)
 			throw new IllegalStateException("Record group with id " + groupId + " could not be found.");

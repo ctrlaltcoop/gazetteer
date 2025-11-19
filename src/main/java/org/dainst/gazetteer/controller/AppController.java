@@ -62,11 +62,10 @@ public class AppController {
 	LanguagesHelper langHelper;
 	@RequestMapping(value="/app/")
 	public String app(
-			ModelMap model, 
-			HttpServletRequest request, 
-			@RequestParam(value="_escaped_fragment_", required=false) String fragment
-			) throws UnsupportedEncodingException {
-
+			ModelMap model,
+			HttpServletRequest request,
+			@RequestParam(name="fragment", value="_escaped_fragment_", required=false) String fragment
+    ) throws UnsupportedEncodingException {
 		// render static html for crawlers
 		if (fragment != null && !fragment.isEmpty() && fragment.startsWith("/show")) {
 			String[] split = URLDecoder.decode(fragment, "UTF-8").split("/");
