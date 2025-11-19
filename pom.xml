@@ -2,7 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.dainst</groupId>
+    <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+    <groupId>org.dainst</groupId>
 	<artifactId>gazetteer</artifactId>
 	<name>gazetteer</name>
 	<packaging>war</packaging>
@@ -19,15 +26,20 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-framework-bom</artifactId>
-				<version>${org.springframework-version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            </dependency>
 
-			<!-- Import platform dependencies for third-party libraries -->
+            <!-- Import GeoTools modules BOM -->
 			<dependency>
 				<groupId>org.geotools</groupId>
 				<artifactId>gt-platform-dependencies</artifactId>
@@ -35,39 +47,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- Import GeoTools modules BOM -->
-			<dependency>
+            <dependency>
 				<groupId>org.geotools</groupId>
 				<artifactId>gt-bom</artifactId>
 				<version>${geotools.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-bom</artifactId>
-                <version>6.5.6</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-data-mongodb</artifactId>
-				<version>3.5.7</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.mongodb</groupId>
-				<artifactId>mongodb-driver-bom</artifactId>
-				<version>5.6.1</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>jakarta.platform</groupId>
-				<artifactId>jakarta.jakartaee-bom</artifactId>
-				<version>11.0.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -108,12 +93,10 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>2.1.6.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
-			<version>2.1.6.RELEASE</version>
 		</dependency>
 
 		<!-- Spring security -->
@@ -136,28 +119,23 @@
 		<dependency>
 			<groupId>jakarta.annotation</groupId>
 			<artifactId>jakarta.annotation-api</artifactId>
-			<version>1.3.4</version>
 		  </dependency>
 		<dependency>
 			<groupId>jakarta.mail</groupId>
 			<artifactId>jakarta.mail-api</artifactId>
-			<version>2.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
-			<version>5.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.ws.rs</groupId>
 			<artifactId>jakarta.ws.rs-api</artifactId>
-			<version>3.0.0</version>
 		</dependency>
 
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.1</version>
         </dependency>
 
 		<!-- JPA -->
@@ -176,7 +154,6 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents.client5</groupId>
 			<artifactId>httpclient5</artifactId>
-			<version>5.4.4</version>
 		</dependency>
 
 		<!-- Jersey -->
@@ -214,22 +191,18 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${org.log4j-version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-api</artifactId>
-		    <version>${org.log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>${org.log4j-version}</version>
 		</dependency>
 
 		<!-- Servlet -->
@@ -242,14 +215,12 @@
 		<dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>2.0.0</version>
         </dependency>
 
         <!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -274,7 +245,6 @@
 		<dependency>
 		    <groupId>org.locationtech.jts</groupId>
 		    <artifactId>jts-core</artifactId>
-		    <version>1.20.0</version>
 		</dependency>
 
 
@@ -309,17 +279,9 @@
 		    <version>0.7</version>
 		</dependency>
         
-
-        <dependency>
-  			<groupId>se.jiderhamn.classloader-leak-prevention</groupId>
-  			<artifactId>classloader-leak-prevention-servlet3</artifactId>
-  			<version>2.7.0</version>
-		</dependency>
-
 		<dependency>
     		<groupId>commons-io</groupId>
     		<artifactId>commons-io</artifactId>
-    		<version>2.19.0</version>
 		</dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
