@@ -106,7 +106,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/toggleHarvester/{name}", method=RequestMethod.POST)
 	@ResponseBody
-	public String toggleHarvester(@PathVariable String name) {
+	public String toggleHarvester(@PathVariable("name") String name) {
 		
 		HarvesterDefinition harvesterDefinition = harvesterDefinitionDao
 				.getByName(name);
@@ -121,7 +121,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/resetHarvester/{name}", method=RequestMethod.POST)
 	@ResponseBody
-	public String resetHarvester(@PathVariable String name) {
+	public String resetHarvester(@PathVariable("name") String name) {
 		
 		HarvesterDefinition harvesterDefinition = harvesterDefinitionDao
 				.getByName(name);

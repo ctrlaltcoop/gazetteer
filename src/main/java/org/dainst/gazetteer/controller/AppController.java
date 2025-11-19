@@ -92,7 +92,7 @@ public class AppController {
 
 	@RequestMapping(value="/app/{view}.html")
 	public String app(
-			@PathVariable String view, 
+			@PathVariable("view") String view,
 			ModelMap model, 
 			HttpServletRequest request
 	) {		
@@ -110,7 +110,7 @@ public class AppController {
 	
 	@RequestMapping(value="/app/partials/{view}.html")
 	public String appPartials(
-			@PathVariable String view,
+			@PathVariable("view") String view,
 			ModelMap model,
 			HttpServletRequest request
 	) {

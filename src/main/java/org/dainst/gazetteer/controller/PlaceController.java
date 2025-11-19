@@ -33,10 +33,11 @@ public class PlaceController {
 	PlaceRepository placeRepository;
 
 	@RequestMapping(value="/place/{id}", method=RequestMethod.GET)
-	public View getPlace(@PathVariable String id,
+	public View getPlace(
+            @PathVariable("id") String id,
 			HttpServletRequest request,
-			HttpServletResponse response) {
-		
+			HttpServletResponse response
+    ) {
 		RedirectView view;
 		
 		// 301 redirect for replaced places

@@ -48,7 +48,10 @@ public class HelpController {
 
 	@ResponseBody
 	@RequestMapping(value = "/help/{language}/{loginNeeded}", method = RequestMethod.GET, produces = "text/plain; charset=utf-8")
-	public String getText(@PathVariable String language, @PathVariable String loginNeeded) throws Exception {
+	public String getText(
+            @PathVariable("language") String language,
+            @PathVariable("loginNeeded") String loginNeeded
+    ) throws Exception {
 		
 		if (!checkForAdminRights())
 			return "";
@@ -67,8 +70,9 @@ public class HelpController {
 	@ResponseBody
 	@RequestMapping(value = "/help/{language}/{loginNeeded}", method = RequestMethod.PUT, produces = "text/plain; charset=utf-8")
 	public String updateText(@RequestBody String text,
-			@PathVariable String language,
-			@PathVariable String loginNeeded) throws Exception {
+			@PathVariable("language") String language,
+			@PathVariable("loginNeeded") String loginNeeded
+    ) throws Exception {
 		
 		if (!checkForAdminRights())
 			return "";

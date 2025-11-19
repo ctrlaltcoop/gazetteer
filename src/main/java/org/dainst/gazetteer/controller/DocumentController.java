@@ -97,7 +97,8 @@ public class DocumentController {
 	private String baseUri;
 		
 	@RequestMapping(value="/doc/{placeId}", method=RequestMethod.GET)
-	public ModelAndView getPlace(@PathVariable String placeId,
+	public ModelAndView getPlace(
+            @PathVariable("placeId") String placeId,
 			@RequestParam(required=false) String layout,
 			@RequestParam(defaultValue="10") int limit,
 			@RequestParam(defaultValue="0") int offset,
@@ -111,7 +112,8 @@ public class DocumentController {
 			@RequestHeader(value="User-Agent", required=false) String userAgent,
 			@RequestHeader(value="Accept", required=false) String accept,
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response
+    ) {
 		
 		RequestContext requestContext = new RequestContext(request);
 		Locale locale = requestContext.getLocale();
@@ -231,9 +233,11 @@ public class DocumentController {
 	}
 	
 	@RequestMapping(value="/doc/shapefile/{placeId}", method=RequestMethod.GET)
-	public void getShapefile(@PathVariable String placeId,
+	public void getShapefile(
+            @PathVariable("placeId") String placeId,
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response
+    ) {
 		
 		Place place = placeDao.findById(placeId).orElse(null);
 		
@@ -404,7 +408,7 @@ public class DocumentController {
 
 	@RequestMapping(value="/doc/{placeId}", method={RequestMethod.POST, RequestMethod.PUT})
 	public ModelAndView updateOrCreatePlace(@RequestBody Place place, 
-			@PathVariable String placeId,
+			@PathVariable("placeId") String placeId,
 			HttpServletResponse response) throws Exception {
 		
 		place.setId(placeId);
@@ -497,8 +501,10 @@ public class DocumentController {
 	}
 	
 	@RequestMapping(value="/doc/{placeId}", method=RequestMethod.DELETE)
-	public void deletePlace(@PathVariable String placeId,
-			HttpServletResponse response) {
+	public void deletePlace(
+            @PathVariable("placeId") String placeId,
+			HttpServletResponse response
+    ) {
 		
 		logger.debug("Deleting place " + placeId + "...");
 		
