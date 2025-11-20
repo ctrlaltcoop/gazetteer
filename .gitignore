@@ -26,3 +26,6 @@ builds/
 # development environments
 .idea/
 .vscode/
+
+#maven
+.mvn
