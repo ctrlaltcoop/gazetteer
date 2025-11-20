@@ -10,13 +10,11 @@ import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.WriteResultChecking;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import com.mongodb.client.MongoClient;
 
 
 @Configuration
 @EnableMongoRepositories(basePackages = "org.dainst.gazetteer.dao")
-@EnableWebSecurity
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
     @Override
