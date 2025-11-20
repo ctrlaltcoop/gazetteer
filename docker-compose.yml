@@ -1,40 +1,4 @@
 services:
-  builder:
-    build:
-      dockerfile: docker/builder/Dockerfile
-    container_name: builder
-    volumes:
-      - ./.m2/:/root/.m2/
-      - ./:/src/
-      - ./docker/builder/docker-entrypoint.sh:/docker-entrypoint.sh
-    working_dir: /src
-    entrypoint: /docker-entrypoint.sh
-    networks:
-      - gazetteer
-
-  tomcat:
-    container_name: tomcat
-    image: tomcat:10-jdk21
-    depends_on:
-      mongodb:
-        condition: service_started
-      elasticsearch:
-        condition: service_healthy
-      builder:
-        condition: service_healthy
-        restart: true
-    volumes:
-      - ./.tomcat/:/usr/local/tomcat/webapps/
-    ports:
-      - "8080:8080"
-    healthcheck:
-      test: ["CMD", "curl", "-o", "/dev/null", "-s", "--head", "--fail", "localhost:8080"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    networks:
-      - gazetteer
-
   mongodb:
     container_name: mongodb
     image: mongo:4.0
@@ -46,8 +10,6 @@ services:
       MONGO_INITDB_DATABASE: gazetteer
     ports:
       - 27017:27017
-    networks:
-      - gazetteer
 
   elasticsearch:
     container_name: elasticsearch
@@ -68,8 +30,6 @@ services:
     user: 1000:1000
     volumes:
       - esdata:/usr/share/elasticsearch/data
-    networks:
-      - gazetteer
 
   elasticsearch-init:
     container_name: gazetteer_elasticsearch_init
@@ -77,18 +37,13 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
-      tomcat:
-        condition: service_healthy
     volumes:
       - ./docker/elasticsearch-init/docker-entrypoint.sh:/docker-entrypoint.sh
       - ./src/main/resources/es/_template/place_template.json:/mappings/place_template.json
     entrypoint: /docker-entrypoint.sh
     environment:
       - ELASTICSEARCH_CONTAINER_NAME=elasticsearch
-      - TOMCAT_CONTAINER_NAME=tomcat
     user: 1000:1000
-    networks:
-      - gazetteer
 
 volumes:
   esdata:
