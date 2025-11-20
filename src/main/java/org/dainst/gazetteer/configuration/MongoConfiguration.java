@@ -18,11 +18,6 @@ import com.mongodb.client.MongoClient;
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
     @Override
-    protected void configureClientSettings(MongoClientSettings.Builder builder) {
-        builder.applyConnectionString(new ConnectionString("mongodb://mongodb"));
-    }
-
-    @Override
     protected String getDatabaseName() {
         return "gazetteer";
     }
