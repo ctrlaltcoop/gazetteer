@@ -1,6 +1,4 @@
-package org.dainst.gazetteer.configuration;
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientSettings;
+package org.dainst.gazetteer;
 import org.dainst.gazetteer.dao.PlaceRepository;
 import org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator;
 import org.dainst.gazetteer.helpers.SimpleMerger;

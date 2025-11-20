@@ -1,6 +1,9 @@
-package org.dainst.gazetteer.configuration;
+package org.dainst.gazetteer;
 import org.dainst.gazetteer.converter.JsonPlaceMessageConverter;
 import org.dainst.gazetteer.converter.KmlPlaceMessageConverter;
+import org.dainst.gazetteer.helpers.MailService;
+import org.dainst.gazetteer.helpers.ProtectLocationsService;
+import org.dainst.gazetteer.helpers.TempFolderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -127,5 +130,20 @@ public class ServletConfiguration implements WebMvcConfigurer {
         registry.viewResolver(jsResolver);
         registry.viewResolver(rdfResolver);
         registry.viewResolver(jspResolver);
+    }
+
+    @Bean
+    TempFolderService tempFolderService() {
+        return new TempFolderService();
+    }
+
+    @Bean
+    ProtectLocationsService protectLocationsService() {
+        return new ProtectLocationsService();
+    }
+
+    @Bean
+    MailService mailService() {
+        return new MailService();
     }
 }
