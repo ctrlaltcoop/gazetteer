@@ -1,4 +1,4 @@
-package org.dainst.gazetteer;
+package org.dainst.gazetteer.configuration;
 import org.dainst.gazetteer.converter.JsonPlaceMessageConverter;
 import org.dainst.gazetteer.converter.KmlPlaceMessageConverter;
 import org.dainst.gazetteer.helpers.MailService;
@@ -18,6 +18,7 @@ import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 import java.util.List;
 import java.util.Map;
@@ -86,6 +87,7 @@ public class ServletConfiguration implements WebMvcConfigurer {
         ".jsp"
         );
         htmlResolver.setContentType(CONTENT_TYPE_HTML);
+        htmlResolver.setViewClass(JstlView.class);
 
         InternalResourceViewResolver jsonResolver = new InternalResourceViewResolver(
                 "/WEB-INF/views/json/",

@@ -1,4 +1,4 @@
-package org.dainst.gazetteer;
+package org.dainst.gazetteer.configuration;
 
 import org.dainst.gazetteer.search.ElasticSearchClientProvider;
 import org.dainst.gazetteer.search.ElasticSearchIndexer;

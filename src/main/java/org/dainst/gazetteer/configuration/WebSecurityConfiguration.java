@@ -1,4 +1,4 @@
-package org.dainst.gazetteer;
+package org.dainst.gazetteer.configuration;
 import org.dainst.gazetteer.dao.UserPasswordChangeRequestRepository;
 import org.dainst.gazetteer.dao.UserRepository;
 import org.dainst.gazetteer.helpers.AuthenticationSuccessHandler;
