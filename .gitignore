@@ -22,3 +22,7 @@ builds/
 .m2
 .mongo-data
 .tomcat
+
+# development environments
+.idea/
+.vscode/
