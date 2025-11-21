@@ -90,10 +90,8 @@ public class WebSecurityConfiguration {
                     .requestMatchers("/*").permitAll()
                     .anyRequest().permitAll()
             )
-            // TODO remove or what to do?!.addFilter(new DelegatingFilterProxy())
-            // TODO move to DSL?!
             .httpBasic(Customizer.withDefaults());
-          
+
         return http.build();
     }
 }
