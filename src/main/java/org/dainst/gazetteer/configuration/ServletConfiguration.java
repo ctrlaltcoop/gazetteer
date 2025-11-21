@@ -4,6 +4,7 @@ import org.dainst.gazetteer.converter.KmlPlaceMessageConverter;
 import org.dainst.gazetteer.helpers.MailService;
 import org.dainst.gazetteer.helpers.ProtectLocationsService;
 import org.dainst.gazetteer.helpers.TempFolderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -60,11 +61,14 @@ public class ServletConfiguration implements WebMvcConfigurer {
                 );
     }
 
+    @Autowired
+    JsonPlaceMessageConverter jsonPlaceMessageConverter;
+
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
         messageConverters.addAll(List.of(
                 new KmlPlaceMessageConverter(),
-                new JsonPlaceMessageConverter(),
+                jsonPlaceMessageConverter,
                 new ByteArrayHttpMessageConverter(),
                 new Jaxb2RootElementHttpMessageConverter(),
                 new MappingJackson2HttpMessageConverter(),
