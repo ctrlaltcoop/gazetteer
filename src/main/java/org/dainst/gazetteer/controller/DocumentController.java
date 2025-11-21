@@ -109,8 +109,8 @@ public class DocumentController {
 			@RequestParam(name="pretty", required=false) boolean pretty,
 			@RequestParam(name="shortLanguageCodes", required=false) boolean shortLanguageCodes,
 			@RequestParam(name="replacing", required=false) String replacing,
-			@RequestHeader(name="userAgent", value="User-Agent", required=false) String userAgent,
-			@RequestHeader(name="accept", value="Accept", required=false) String accept,
+			@RequestHeader(value="User-Agent", required=false) String userAgent,
+			@RequestHeader(value="Accept", required=false) String accept,
 			HttpServletRequest request,
 			HttpServletResponse response
     ) {
