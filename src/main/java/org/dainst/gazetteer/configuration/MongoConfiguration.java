@@ -1,4 +1,6 @@
 package org.dainst.gazetteer.configuration;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
 import org.dainst.gazetteer.dao.PlaceRepository;
 import org.dainst.gazetteer.helpers.MongoBasedIncrementingIdGenerator;
 import org.dainst.gazetteer.helpers.SimpleMerger;
@@ -14,6 +16,11 @@ import com.mongodb.client.MongoClient;
 @Configuration
 @EnableMongoRepositories(basePackages = "org.dainst.gazetteer.dao")
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
+
+    @Override
+    protected void configureClientSettings(MongoClientSettings.Builder builder) {
+        builder.applyConnectionString(new ConnectionString("mongodb://mongodb"));
+    }
 
     @Override
     protected String getDatabaseName() {
