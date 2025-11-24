@@ -16,7 +16,4 @@
 	</bean>
 
 	<context:property-placeholder location="WEB-INF/*.properties" />
-
-	<import resource="appServlet/persistence-context.xml" />
-	<import resource="appServlet/security-context.xml" />
 </beans>
