@@ -28,9 +28,11 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebMvc
@@ -57,17 +59,15 @@ public class ServletConfiguration implements WebMvcConfigurer {
         );
     }
 
+    public Map<String, MediaType> mediaTypeMap() {
+        return mediaTypes().entrySet().stream().collect(
+                Collectors.toMap(Map.Entry::getKey, entry -> MediaType.parseMediaType(entry.getValue()))
+        );
+    }
+
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.
-                defaultContentType(
-                        MediaType.parseMediaType(CONTENT_TYPE_HTML),
-                        MediaType.parseMediaType(CONTENT_TYPE_KML),
-                        MediaType.parseMediaType(CONTENT_TYPE_JSON),
-                        MediaType.parseMediaType(CONTENT_TYPE_GEOJSON),
-                        MediaType.parseMediaType(CONTENT_TYPE_JS),
-                        MediaType.parseMediaType(CONTENT_TYPE_RDF)
-                );
+        configurer.mediaTypes(mediaTypeMap());
     }
 
     @Autowired
