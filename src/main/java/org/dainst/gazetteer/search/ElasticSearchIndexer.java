@@ -12,7 +12,9 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ElasticSearchIndexer {
 	
 	private final static Logger logger = LoggerFactory.getLogger("org.dainst.gazetteer.ElasticSearchIndexer");
