@@ -1,9 +1,9 @@
 package org.dainst.gazetteer.configuration;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.dainst.gazetteer.converter.JsonPlaceMessageConverter;
 import org.dainst.gazetteer.converter.KmlPlaceMessageConverter;
-import org.dainst.gazetteer.helpers.MailService;
-import org.dainst.gazetteer.helpers.ProtectLocationsService;
-import org.dainst.gazetteer.helpers.TempFolderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
