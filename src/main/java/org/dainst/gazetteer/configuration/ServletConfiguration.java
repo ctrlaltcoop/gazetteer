@@ -18,6 +18,7 @@ import org.springframework.http.converter.support.AllEncompassingFormHttpMessage
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -28,7 +29,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -177,4 +177,10 @@ public class ServletConfiguration implements WebMvcConfigurer {
         registry.addInterceptor(localeResolverInterceptor());
         registry.addInterceptor(localeChangeInterceptor());
     }
+
+    @Bean
+    CharacterEncodingFilter characterEncodingFilter() {
+        return new CharacterEncodingFilter("UTF-8", true);
+    }
+
 }
