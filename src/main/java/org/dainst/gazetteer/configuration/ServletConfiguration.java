@@ -5,6 +5,7 @@ import org.dainst.gazetteer.helpers.MailService;
 import org.dainst.gazetteer.helpers.ProtectLocationsService;
 import org.dainst.gazetteer.helpers.TempFolderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -27,6 +28,7 @@ import java.util.Map;
 @Configuration
 @EnableWebMvc
 @EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
+@ServletComponentScan(basePackages = "org.dainst.gazetteer")
 public class ServletConfiguration implements WebMvcConfigurer {
 
     private final String CONTENT_TYPE_HTML = "text/html";
