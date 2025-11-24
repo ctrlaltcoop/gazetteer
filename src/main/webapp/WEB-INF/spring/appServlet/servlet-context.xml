@@ -8,21 +8,4 @@
 
 	<context:property-placeholder location="/WEB-INF/*.properties" />
 	
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-		<property name="defaultLocale" value="de" />
-	</bean>
-	
-	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-		<property name="paramName" value="lang" />
-	</bean>
-	
-	<bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" >
-		<property name="order" value="0" />
-		<property name="interceptors">
-			<ref bean="localeChangeInterceptor" />
-		</property>
-	</bean>
-
-	<context:component-scan base-package="org.dainst.gazetteer" />
-	
 </beans>

@@ -18,11 +18,16 @@ import org.springframework.http.converter.support.AllEncompassingFormHttpMessage
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Configuration
@@ -138,6 +143,28 @@ public class ServletConfiguration implements WebMvcConfigurer {
         registry.viewResolver(jsResolver);
         registry.viewResolver(rdfResolver);
         registry.viewResolver(jspResolver);
+    }
+
+    @Bean
+    LocaleResolver localeResolver() {
+        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        cookieLocaleResolver.setDefaultLocale(Locale.GERMAN);
+        return cookieLocaleResolver;
+    }
+
+    @Bean
+    LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        return lci;
+    }
+
+    @Bean
+    RequestMappingHandlerMapping handlerMapping(LocaleChangeInterceptor localeChangeInterceptor) {
+        RequestMappingHandlerMapping requestMappingHandlerMapping = new RequestMappingHandlerMapping();
+        requestMappingHandlerMapping.setOrder(0);
+        requestMappingHandlerMapping.setInterceptors(localeChangeInterceptor);
+        return requestMappingHandlerMapping;
     }
 
 }
