@@ -94,8 +94,8 @@ public class ServletConfiguration implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         InternalResourceViewResolver htmlResolver = new InternalResourceViewResolver(
-        "/WEB-INF/views/html/",
-        ".jsp"
+                "/WEB-INF/views/html/",
+                ".jsp"
         );
         htmlResolver.setContentType(CONTENT_TYPE_HTML);
         htmlResolver.setViewClass(JstlView.class);
@@ -131,8 +131,8 @@ public class ServletConfiguration implements WebMvcConfigurer {
         rdfResolver.setContentType(CONTENT_TYPE_RDF);
 
         InternalResourceViewResolver jspResolver = new InternalResourceViewResolver(
-               "/WEB-INF/views/",
-               ".jsp"
+                "/WEB-INF/views/",
+                ".jsp"
         );
 
 
