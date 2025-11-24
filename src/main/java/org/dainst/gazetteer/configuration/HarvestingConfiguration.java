@@ -1,10 +1,5 @@
 package org.dainst.gazetteer.configuration;
 
-import org.dainst.gazetteer.dao.HarvesterDefinitionRepository;
-import org.dainst.gazetteer.dao.PlaceRepository;
-import org.dainst.gazetteer.harvest.HarvestingManager;
-import org.dainst.gazetteer.helpers.IdGenerator;
-import org.dainst.gazetteer.helpers.Merger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
