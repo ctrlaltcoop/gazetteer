@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HarvestingManager implements InitializingBean {
-	private static Logger logger = LoggerFactory.getLogger(HarvestingManager.class);
+	private static final Logger logger = LoggerFactory.getLogger(HarvestingManager.class);
 
 	private final HarvesterDefinitionRepository harvesterDefinitionDao;
 	private final PlaceRepository placeDao;
@@ -41,7 +41,7 @@ public class HarvestingManager implements InitializingBean {
         logger.info("initializing HarvestingManager");
         Iterable<HarvesterDefinition> defs = harvesterDefinitionDao.findAll();
         for (HarvesterDefinition def : defs) {
-            logger.info("scheduling harvesting handler for definition: " + def.getName());
+            logger.info("scheduling harvesting handler for definition: {}", def.getName());
             CronTrigger trigger = new CronTrigger(def.getCronExpression());
             HarvestingHandler handler = new HarvestingHandler(def, placeDao,
                     harvesterDefinitionDao, idGenerator, merger);
