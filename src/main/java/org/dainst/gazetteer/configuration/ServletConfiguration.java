@@ -146,13 +146,6 @@ public class ServletConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    LocaleResolver localeResolver() {
-        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
-        cookieLocaleResolver.setDefaultLocale(Locale.GERMAN);
-        return cookieLocaleResolver;
-    }
-
-    @Bean
     LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
