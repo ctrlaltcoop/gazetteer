@@ -140,18 +140,4 @@ public class ServletConfiguration implements WebMvcConfigurer {
         registry.viewResolver(jspResolver);
     }
 
-    @Bean
-    TempFolderService tempFolderService() {
-        return new TempFolderService();
-    }
-
-    @Bean
-    ProtectLocationsService protectLocationsService() {
-        return new ProtectLocationsService();
-    }
-
-    @Bean
-    MailService mailService() {
-        return new MailService();
-    }
 }
