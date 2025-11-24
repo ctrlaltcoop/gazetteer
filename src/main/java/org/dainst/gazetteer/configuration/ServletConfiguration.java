@@ -18,17 +18,25 @@ import org.springframework.http.converter.support.AllEncompassingFormHttpMessage
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.validation.MessageCodesResolver;
+import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.view.AbstractUrlBasedView;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.swing.text.html.HTML;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -67,7 +75,21 @@ public class ServletConfiguration implements WebMvcConfigurer {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.mediaTypes(mediaTypeMap());
+        configurer
+                .mediaTypes(mediaTypeMap())
+                .defaultContentType(mediaTypeMap().get("html"));
+    }
+
+    /**
+     * Create the CNVR. Get Spring to inject the ContentNegotiationManager
+     * created by the configurer (see previous method).
+     */
+    @Bean
+    public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
+        ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+        resolver.setContentNegotiationManager(manager);
+        resolver.setViewResolvers(viewResolvers());
+        return resolver;
     }
 
     @Autowired
@@ -93,58 +115,57 @@ public class ServletConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        InternalResourceViewResolver htmlResolver = new InternalResourceViewResolver(
+    public List<ViewResolver> viewResolvers() {
+        ChainableInternalResourceViewResolver htmlResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/html/",
                 ".jsp"
         );
         htmlResolver.setContentType(CONTENT_TYPE_HTML);
-        htmlResolver.setViewClass(JstlView.class);
 
-        InternalResourceViewResolver jsonResolver = new InternalResourceViewResolver(
+        ChainableInternalResourceViewResolver jsonResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/json/",
                 ".jsp"
         );
         jsonResolver.setContentType(CONTENT_TYPE_JSON);
 
-        InternalResourceViewResolver geoJsonResolver = new InternalResourceViewResolver(
+        ChainableInternalResourceViewResolver geoJsonResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/geojson/",
                 ".jsp"
         );
         geoJsonResolver.setContentType(CONTENT_TYPE_GEOJSON);
 
-        InternalResourceViewResolver kmlResolver = new InternalResourceViewResolver(
+        ChainableInternalResourceViewResolver kmlResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/kml/",
                 ".jsp"
         );
         kmlResolver.setContentType(CONTENT_TYPE_KML);
 
-        InternalResourceViewResolver jsResolver = new InternalResourceViewResolver(
+        ChainableInternalResourceViewResolver jsResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/javascript/",
                 ".jsp"
         );
         jsResolver.setContentType(CONTENT_TYPE_JS);
 
-        InternalResourceViewResolver rdfResolver = new InternalResourceViewResolver(
+        ChainableInternalResourceViewResolver rdfResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/rdf/",
                 ".jsp"
         );
         rdfResolver.setContentType(CONTENT_TYPE_RDF);
 
-        InternalResourceViewResolver jspResolver = new InternalResourceViewResolver(
+        ChainableInternalResourceViewResolver jspResolver = new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/",
                 ".jsp"
         );
 
-
-        registry.viewResolver(htmlResolver);
-        registry.viewResolver(jsonResolver);
-        registry.viewResolver(geoJsonResolver);
-        registry.viewResolver(kmlResolver);
-        registry.viewResolver(jsResolver);
-        registry.viewResolver(rdfResolver);
-        registry.viewResolver(jspResolver);
+        return new ArrayList<>(List.of(
+                jsonResolver,
+                geoJsonResolver,
+                kmlResolver,
+                jsonResolver,
+                rdfResolver,
+                jsonResolver,
+                htmlResolver
+        ));
     }
 
     LocaleResolver localeResolver() {
@@ -183,4 +204,39 @@ public class ServletConfiguration implements WebMvcConfigurer {
         return new CharacterEncodingFilter("UTF-8", true);
     }
 
+    private static class ChainableInternalResourceViewResolver extends InternalResourceViewResolver {
+
+        public ChainableInternalResourceViewResolver(String prefix, String suffix) {
+            super(prefix, suffix);
+        }
+
+        @Override
+        protected AbstractUrlBasedView buildView(String viewName) throws Exception {
+            String url = getPrefix() + viewName + getSuffix();
+            InputStream stream = getServletContext().getResourceAsStream(url);
+            if (stream == null) {
+                return new NonExistentView();
+            }
+            return super.buildView(viewName);
+        }
+
+        private static class NonExistentView extends AbstractUrlBasedView {
+
+            @Override
+            protected boolean isUrlRequired() {
+                return false;
+            }
+
+            @Override
+            public boolean checkResource(Locale locale) throws Exception {
+                return false;
+            }
+
+            @Override
+            protected void renderMergedOutputModel(Map<String, Object> model,
+                                                   HttpServletRequest request, HttpServletResponse response) throws Exception {
+                // Purposely empty, it should never get called
+            }
+        }
+    }
 }
