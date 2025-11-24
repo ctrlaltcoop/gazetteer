@@ -18,6 +18,10 @@ import org.springframework.http.converter.support.AllEncompassingFormHttpMessage
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.HandlerAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
@@ -145,19 +149,34 @@ public class ServletConfiguration implements WebMvcConfigurer {
         registry.viewResolver(jspResolver);
     }
 
-    @Bean
+    LocaleResolver localeResolver() {
+        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        cookieLocaleResolver.setDefaultLocale(Locale.GERMAN);
+        return cookieLocaleResolver;
+    }
+
+    HandlerInterceptor localeResolverInterceptor() {
+        return new HandlerInterceptor() {
+            @Override
+            public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+                if (handler instanceof HandlerMethod) {
+                    request.setAttribute(DispatcherServlet.LOCALE_RESOLVER_ATTRIBUTE, localeResolver());
+                }
+                return true;
+            }
+        };
+    }
+
     LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
         return lci;
     }
 
-    @Bean
-    RequestMappingHandlerMapping handlerMapping(LocaleChangeInterceptor localeChangeInterceptor) {
-        RequestMappingHandlerMapping requestMappingHandlerMapping = new RequestMappingHandlerMapping();
-        requestMappingHandlerMapping.setOrder(0);
-        requestMappingHandlerMapping.setInterceptors(localeChangeInterceptor);
-        return requestMappingHandlerMapping;
-    }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeResolverInterceptor());
+        registry.addInterceptor(localeChangeInterceptor());
+    }
 }
