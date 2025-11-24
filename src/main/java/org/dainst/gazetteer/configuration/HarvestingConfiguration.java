@@ -12,6 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 @Configuration
 public class HarvestingConfiguration {
+    /* TODO
     @Bean
     TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
@@ -33,5 +34,5 @@ public class HarvestingConfiguration {
         HarvestingManager harvestingManager = new HarvestingManager();
         harvestingManager.initialize();
         return harvestingManager;
-    }
+    }*/
 }
