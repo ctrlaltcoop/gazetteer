@@ -88,6 +88,13 @@ Backend (Spring Boot) und Frontend (Javascript/AngularJS) werden im gleichen Pro
 
 ## Deployment
 
+### docker
+Create a docker image with
+```shell
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=org.dainst/gazetteer
+```
+
+### war
 For creating the production and test `.war` packages see the comments in [build.sh](./build.sh).
 
 # Migration from 2.9.9 to 3.0.0
