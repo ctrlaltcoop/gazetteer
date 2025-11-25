@@ -94,11 +94,10 @@ public class SearchController {
 
     private final RestHighLevelClient client;
 
-    SearchController(final RestHighLevelClient client) {
-        this.client = client;
-    }
-
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @RequestMapping(
+        value = { "/search.*", "/search" },
+        method = RequestMethod.GET
+    )
     public ModelAndView simpleSearch(
         @RequestParam(name = "limit", defaultValue = "10") int limit,
         @RequestParam(name = "offset", defaultValue = "0") int offset,
