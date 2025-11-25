@@ -1,5 +1,5 @@
 meta {
-  name: Search API
+  name: Search API Geojson
   type: http
   seq: 2
 }
@@ -12,6 +12,10 @@ get {
 
 params:query {
   q: rotes+meer
+}
+
+headers {
+  Accept: application/vnd.geo+json
 }
 
 assert {
