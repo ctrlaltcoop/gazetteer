@@ -286,13 +286,19 @@ public class SearchController {
         return mav;
     }
 
-	@RequestMapping(value = { "/search.*", "/search" }, method = RequestMethod.POST)
-	public ModelAndView extendedSearch(
-            @RequestParam(name="limit", defaultValue = "10") int limit,
-			@RequestParam(name="offset", defaultValue = "0") int offset,
-            @RequestParam(name="showInReview", required = false) String showInReview,
-			@RequestBody String jsonQuery,
-            HttpServletRequest request
+    @RequestMapping(
+        value = { "/search.*", "/search" },
+        method = RequestMethod.POST
+    )
+    public ModelAndView extendedSearch(
+        @RequestParam(name = "limit", defaultValue = "10") int limit,
+        @RequestParam(name = "offset", defaultValue = "0") int offset,
+        @RequestParam(
+            name = "showInReview",
+            required = false
+        ) String showInReview,
+        @RequestBody String jsonQuery,
+        HttpServletRequest request
     ) {
         RequestContext requestContext = new RequestContext(request);
         Locale locale = requestContext.getLocale();
@@ -342,19 +348,23 @@ public class SearchController {
         return mav;
     }
 
-	}
-
-	@RequestMapping(value = {"/geoSearch.*", "/geoSearch"}, method = RequestMethod.GET)
-	public ModelAndView geoList(
-            @RequestParam(name="limit", defaultValue = "10") int limit,
-			@RequestParam(name="offset", defaultValue = "0") int offset,
-            @RequestParam(name="lat") double lat,
-            @RequestParam(name="lon") double lon,
-			@RequestParam(name="distance", defaultValue = "50") int distance,
-            @RequestParam(name="filter", required = false) String filter,
-			@RequestParam(name="showInReview", required = false) String showInReview,
-            HttpServletRequest request,
-			HttpServletResponse response
+    @RequestMapping(
+        value = { "/geoSearch.*", "/geoSearch" },
+        method = RequestMethod.GET
+    )
+    public ModelAndView geoList(
+        @RequestParam(name = "limit", defaultValue = "10") int limit,
+        @RequestParam(name = "offset", defaultValue = "0") int offset,
+        @RequestParam(name = "lat") double lat,
+        @RequestParam(name = "lon") double lon,
+        @RequestParam(name = "distance", defaultValue = "50") int distance,
+        @RequestParam(name = "filter", required = false) String filter,
+        @RequestParam(
+            name = "showInReview",
+            required = false
+        ) String showInReview,
+        HttpServletRequest request,
+        HttpServletResponse response
     ) {
         RequestContext requestContext = new RequestContext(request);
         Locale locale = requestContext.getLocale();
