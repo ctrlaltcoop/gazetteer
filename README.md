@@ -5,25 +5,7 @@ Frontend als auch Backend-Code. Es werden lokale Instanzen von MongoDB und Elast
 
 ## Setup
 
-### Import des Github Repos in IDE
-
-#### STS
-
-Das Projekt kann über _File -> Import -> Maven -> Existing Maven Project_ in STS importiert werden und kann nach Auflösen der Dependencies mit _Run As -> Run on Server_ gestartet werden. Danach ist der Gazetteer unter http://localhost:8080/gazetteer erreichbar.
-
-#### IntelliJ
-
-Das Projekt kann in IntelliJ über File -> New -> Project from Version Control -> Github importiert werden.
-
-Einbinden von Java JDK:
-Unter "File -> Project Structure... -> Plattform Settings -> SDK -> Add New SDK -> Java SDK"
-muss das Verzeichnis der Java SDK Installation angegeben werden. Unter Mac ist dies z.B. "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home".
-
-Einbinden von Tomcat:
-Unter "Preferences -> Build, Execution, Deployment -> Application Servers -> Add Apllication Server -> Tomcat Server"
-kann das Verzeichnis einer binären Distribution von Tomcat angegeben werden.
-
-### Konfiguration: Hauptanwendung (Java/Tomcat)
+### Konfiguration: Hauptanwendung
 
 Vor dem Start muss sichergestellt werden, dass die nötigen Konfigurationsdateien vorhanden sind:
 
