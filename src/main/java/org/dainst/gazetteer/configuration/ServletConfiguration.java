@@ -74,6 +74,7 @@ public class ServletConfiguration implements WebMvcConfigurer {
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer
                 .mediaTypes(mediaTypeMap())
+                .favorPathExtension(true)
                 .defaultContentType(mediaTypeMap().get("html"));
     }
 
