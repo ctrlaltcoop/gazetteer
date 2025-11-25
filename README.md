@@ -88,6 +88,12 @@ Backend (Spring Boot) und Frontend (Javascript/AngularJS) werden im gleichen Pro
 
 ## Deployment
 
+### maven wrapper
+You can run the application directly from shell by calling
+```shell
+./mvnw spring-boot:run
+```
+
 ### docker
 Create a docker image with
 ```shell
