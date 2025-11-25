@@ -94,6 +94,10 @@ public class SearchController {
 
     private final RestHighLevelClient client;
 
+    SearchController(final RestHighLevelClient client) {
+        this.client = client;
+    }
+
     @RequestMapping(
         value = { "/search.*", "/search" },
         method = RequestMethod.GET
