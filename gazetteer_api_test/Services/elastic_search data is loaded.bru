@@ -100,7 +100,7 @@ body:json {
 }
 
 assert {
-  res.body.hits.total: eq 3
+  res.body.hits.total.value: eq 3
 }
 
 settings {

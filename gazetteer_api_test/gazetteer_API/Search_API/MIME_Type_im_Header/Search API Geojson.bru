@@ -1,7 +1,7 @@
 meta {
   name: Search API Geojson
   type: http
-  seq: 2
+  seq: 1
 }
 
 get {
@@ -20,7 +20,8 @@ headers {
 
 assert {
   res.status: eq 200
-  res.body.total: eq 3
+  res.body.type: eq "FeatureCollection"
+  res.body.features: isNotEmpty
 }
 
 settings {

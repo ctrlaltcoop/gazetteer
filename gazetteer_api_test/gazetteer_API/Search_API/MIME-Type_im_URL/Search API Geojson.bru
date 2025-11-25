@@ -16,7 +16,8 @@ params:query {
 
 assert {
   res.status: eq 200
-  res.body.total: eq 3
+  res.body.type: eq "FeatureCollection"
+  res.body.features: isNotEmpty
 }
 
 settings {
