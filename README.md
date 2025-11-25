@@ -80,7 +80,12 @@ Backend (Spring Boot) und Frontend (Javascript/AngularJS) werden im gleichen Pro
 
 ### i18n
 
-Übersetzungen werden in den Dateien _src/main/resources/messages_<sprache>.properties* und \_src/main/webapps/resources/js/i18n/messages*<sprache>.js\_ (Frontend) vorgenommen.
+Übersetzungen werden in den Dateien
+
+- `src/main/resources/messages_<sprache>.properties`
+- `src/main/webapps/resources/js/i18n/messages*<sprache>.js`
+
+(Frontend) vorgenommen.
 
 ## Deployment
 
