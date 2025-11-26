@@ -665,10 +665,79 @@ public class SearchController {
         return mav;
     }
 
-    @RequestMapping(
-        value = { "/geoSearch.*", "/geoSearch" },
-        method = RequestMethod.GET
-    )
+    @GetMapping(value = "/geoSearch.kml", produces = GazetteerMediaType.APPLICATION_KML_VALUE)
+    public ModelAndView geoListKml(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "lat") double lat,
+            @RequestParam(name = "lon") double lon,
+            @RequestParam(name = "distance", defaultValue = "50") int distance,
+            @RequestParam(name = "filter", required = false) String filter,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return geoList(limit, offset, lat, lon, distance, filter, showInReview, request, response);
+    }
+
+    @GetMapping(value = "/geoSearch.rdf", produces = GazetteerMediaType.APPLICATION_RDF_VALUE)
+    public ModelAndView geoListRdf(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "lat") double lat,
+            @RequestParam(name = "lon") double lon,
+            @RequestParam(name = "distance", defaultValue = "50") int distance,
+            @RequestParam(name = "filter", required = false) String filter,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return geoList(limit, offset, lat, lon, distance, filter, showInReview, request, response);
+    }
+
+    @GetMapping(value = "/geoSearch.geojson", produces = GazetteerMediaType.APPLICATION_GEOJSON_VALUE)
+    public ModelAndView geoListGeoJson(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "lat") double lat,
+            @RequestParam(name = "lon") double lon,
+            @RequestParam(name = "distance", defaultValue = "50") int distance,
+            @RequestParam(name = "filter", required = false) String filter,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return geoList(limit, offset, lat, lon, distance, filter, showInReview, request, response);
+    }
+
+    @GetMapping(value = "/geoSearch.json", produces = GazetteerMediaType.APPLICATION_JSON_VALUE)
+    public ModelAndView geoListJson(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "lat") double lat,
+            @RequestParam(name = "lon") double lon,
+            @RequestParam(name = "distance", defaultValue = "50") int distance,
+            @RequestParam(name = "filter", required = false) String filter,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return geoList(limit, offset, lat, lon, distance, filter, showInReview, request, response);
+    }
+
+    @GetMapping("/geoSearch")
     public ModelAndView geoList(
         @RequestParam(name = "limit", defaultValue = "10") int limit,
         @RequestParam(name = "offset", defaultValue = "0") int offset,
