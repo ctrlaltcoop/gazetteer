@@ -5,7 +5,6 @@
 </div>
 <br/>
 
-
 Gazetteer ist eine [Spring Boot](https://spring.io/projects/spring-boot)-Anwendung. In diesem Repostiory befinden sich sowohl
 Frontend als auch Backend-Code. Das Frontend wird vom Backend geservt. Es werden lokale Instanzen von MongoDB und Elasticsearch benötigt.
 
@@ -79,9 +78,11 @@ Dazu muss ein Useraccount verwendet werden, der über Adminberechtigungen verfü
 
 ### API Tests
 
-You can run tests again the API. In order to do it, you first need to have [Bruno](https://docs.usebruno.com/) installed.
+Wir verwenden [Bruno](https://docs.usebruno.com/), um Tests mit der API einer lokal bereitgestellten Gazetteer-App durchzuführen.
 
-You can run the tests:
+Um die Tests auszuführen, müssen Sie zunächst [Bruno CLI installieren](https://docs.usebruno.com/bru-cli/installation).
+
+So führen Sie die Tests aus:
 
 ```bash
 cd gazetteer_api_test/ && bru run
@@ -103,18 +104,23 @@ Backend (Spring Boot) und Frontend (Javascript/AngularJS) werden im gleichen Pro
 ## Deployment
 
 ### maven wrapper
+
 You can run the application directly from shell by calling
+
 ```shell
 ./mvnw spring-boot:run
 ```
 
 ### docker
+
 Create a docker image with
+
 ```shell
 ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=org.dainst/gazetteer
 ```
 
 ### war
+
 For creating the production and test `.war` packages see the comments in [build.sh](./build.sh).
 
 ## Migration von 2.9.9 nach 3.0.0
