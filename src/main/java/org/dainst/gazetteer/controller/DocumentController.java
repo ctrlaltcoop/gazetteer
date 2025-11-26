@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.dainst.gazetteer.GazetteerMediaType;
 import org.dainst.gazetteer.converter.JsonPlaceSerializer;
 import org.dainst.gazetteer.converter.ShapefileCreator;
 import org.dainst.gazetteer.dao.GroupRoleRepository;
@@ -46,13 +47,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 import org.springframework.web.servlet.view.RedirectView;
@@ -92,11 +87,160 @@ public class DocumentController {
 	
 	@Autowired
 	private LanguagesHelper langHelper;
-	
-	@Value("${baseUri}")
+
+    @Value("${baseUri}")
 	private String baseUri;
-		
-	@RequestMapping(value={"/doc/{placeId}.*", "/doc/{placeId}"}, method=RequestMethod.GET)
+
+    @GetMapping(value = "/doc/{placeId}.rdf", produces = GazetteerMediaType.APPLICATION_RDF_VALUE)
+    public ModelAndView getPlaceRDF(
+            @PathVariable("placeId") String placeId,
+            @RequestParam(name="layout", required=false) String layout,
+            @RequestParam(name="limit", defaultValue="10") int limit,
+            @RequestParam(name="offset", defaultValue="0") int offset,
+            @RequestParam(name="q", required=false) String q,
+            @RequestParam(name="fuzzy", required=false) String fuzzy,
+            @RequestParam(name="view", required=false, defaultValue="map,table") String view,
+            @RequestParam(name="add", required=false) String add,
+            @RequestParam(name="pretty", required=false) boolean pretty,
+            @RequestParam(name="shortLanguageCodes", required=false) boolean shortLanguageCodes,
+            @RequestParam(name="replacing", required=false) String replacing,
+            @RequestHeader(value="User-Agent", required=false) String userAgent,
+            @RequestHeader(value="Accept", required=false) String accept,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return getPlace(
+                placeId,
+                layout,
+                limit,
+                offset,
+                q,
+                fuzzy,
+                view,
+                add,
+                pretty,
+                shortLanguageCodes,
+                replacing,
+                userAgent,
+                accept,
+                request,
+                response
+        );
+    }
+
+
+    @GetMapping(value = "/doc/{placeId}.kml", produces = GazetteerMediaType.APPLICATION_KML_VALUE)
+    public ModelAndView getPlaceKML(
+            @PathVariable("placeId") String placeId,
+            @RequestParam(name="layout", required=false) String layout,
+            @RequestParam(name="limit", defaultValue="10") int limit,
+            @RequestParam(name="offset", defaultValue="0") int offset,
+            @RequestParam(name="q", required=false) String q,
+            @RequestParam(name="fuzzy", required=false) String fuzzy,
+            @RequestParam(name="view", required=false, defaultValue="map,table") String view,
+            @RequestParam(name="add", required=false) String add,
+            @RequestParam(name="pretty", required=false) boolean pretty,
+            @RequestParam(name="shortLanguageCodes", required=false) boolean shortLanguageCodes,
+            @RequestParam(name="replacing", required=false) String replacing,
+            @RequestHeader(value="User-Agent", required=false) String userAgent,
+            @RequestHeader(value="Accept", required=false) String accept,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return getPlace(
+                placeId,
+                layout,
+                limit,
+                offset,
+                q,
+                fuzzy,
+                view,
+                add,
+                pretty,
+                shortLanguageCodes,
+                replacing,
+                userAgent,
+                accept,
+                request,
+                response
+        );
+    }
+
+    @GetMapping(value = "/doc/{placeId}.geojson", produces = GazetteerMediaType.APPLICATION_GEOJSON_VALUE)
+    public ModelAndView getPlaceGeoJson(
+            @PathVariable("placeId") String placeId,
+            @RequestParam(name="layout", required=false) String layout,
+            @RequestParam(name="limit", defaultValue="10") int limit,
+            @RequestParam(name="offset", defaultValue="0") int offset,
+            @RequestParam(name="q", required=false) String q,
+            @RequestParam(name="fuzzy", required=false) String fuzzy,
+            @RequestParam(name="view", required=false, defaultValue="map,table") String view,
+            @RequestParam(name="add", required=false) String add,
+            @RequestParam(name="pretty", required=false) boolean pretty,
+            @RequestParam(name="shortLanguageCodes", required=false) boolean shortLanguageCodes,
+            @RequestParam(name="replacing", required=false) String replacing,
+            @RequestHeader(value="User-Agent", required=false) String userAgent,
+            @RequestHeader(value="Accept", required=false) String accept,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return getPlace(
+                placeId,
+                layout,
+                limit,
+                offset,
+                q,
+                fuzzy,
+                view,
+                add,
+                pretty,
+                shortLanguageCodes,
+                replacing,
+                userAgent,
+                accept,
+                request,
+                response
+        );
+    }
+
+    @GetMapping(value = "/doc/{placeId}.json", produces = GazetteerMediaType.APPLICATION_JSON_VALUE)
+    public ModelAndView getPlaceJSON(
+            @PathVariable("placeId") String placeId,
+            @RequestParam(name="layout", required=false) String layout,
+            @RequestParam(name="limit", defaultValue="10") int limit,
+            @RequestParam(name="offset", defaultValue="0") int offset,
+            @RequestParam(name="q", required=false) String q,
+            @RequestParam(name="fuzzy", required=false) String fuzzy,
+            @RequestParam(name="view", required=false, defaultValue="map,table") String view,
+            @RequestParam(name="add", required=false) String add,
+            @RequestParam(name="pretty", required=false) boolean pretty,
+            @RequestParam(name="shortLanguageCodes", required=false) boolean shortLanguageCodes,
+            @RequestParam(name="replacing", required=false) String replacing,
+            @RequestHeader(value="User-Agent", required=false) String userAgent,
+            @RequestHeader(value="Accept", required=false) String accept,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return getPlace(
+                placeId,
+                layout,
+                limit,
+                offset,
+                q,
+                fuzzy,
+                view,
+                add,
+                pretty,
+                shortLanguageCodes,
+                replacing,
+                userAgent,
+                accept,
+                request,
+                response
+        );
+    }
+
+    @GetMapping(value = "/doc/{placeId}")
 	public ModelAndView getPlace(
             @PathVariable("placeId") String placeId,
 			@RequestParam(name="layout", required=false) String layout,
