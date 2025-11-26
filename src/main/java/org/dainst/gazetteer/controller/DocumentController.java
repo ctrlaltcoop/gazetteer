@@ -443,8 +443,45 @@ public class DocumentController {
 		}
 		
 	}
-	
-	@RequestMapping(value = { "/doc.*", "/doc" }, method={RequestMethod.POST, RequestMethod.PUT})
+
+    @RequestMapping(value = "/doc.kml", method={RequestMethod.POST, RequestMethod.PUT}, produces = GazetteerMediaType.APPLICATION_KML_VALUE)
+    public ModelAndView createPlaceKML(
+            @RequestBody Place place,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        return createPlace(place, request, response);
+    }
+
+    @RequestMapping(value = "/doc.geojson", method={RequestMethod.POST, RequestMethod.PUT}, produces = GazetteerMediaType.APPLICATION_GEOJSON_VALUE)
+    public ModelAndView createPlaceGeoJson(
+            @RequestBody Place place,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        return createPlace(place, request, response);
+    }
+
+    @RequestMapping(value = "/doc.json", method={RequestMethod.POST, RequestMethod.PUT}, produces = GazetteerMediaType.APPLICATION_JSON_VALUE)
+    public ModelAndView createPlaceJSON(
+            @RequestBody Place place,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        return createPlace(place, request, response);
+    }
+
+
+    @RequestMapping(value = "/doc.rdf", method={RequestMethod.POST, RequestMethod.PUT}, produces = GazetteerMediaType.APPLICATION_RDF_VALUE)
+    public ModelAndView createPlaceRdf(
+            @RequestBody Place place,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        return createPlace(place, request, response);
+    }
+
+    @RequestMapping(value = "/doc", method={RequestMethod.POST, RequestMethod.PUT})
 	public ModelAndView createPlace(@RequestBody Place place,
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
