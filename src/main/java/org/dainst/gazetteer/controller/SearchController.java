@@ -550,10 +550,63 @@ public class SearchController {
         return mav;
     }
 
-    @RequestMapping(
-        value = { "/search.*", "/search" },
-        method = RequestMethod.POST
-    )
+    @PostMapping(value = "/search.json", produces = GazetteerMediaType.APPLICATION_JSON_VALUE)
+    public ModelAndView extendedSearchJson(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestBody String jsonQuery,
+            HttpServletRequest request
+    ) {
+        return extendedSearch(limit, offset, showInReview, jsonQuery, request);
+    }
+
+    @PostMapping(value = "/search.geojson", produces = GazetteerMediaType.APPLICATION_GEOJSON_VALUE)
+    public ModelAndView extendedSearcGeoJson(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestBody String jsonQuery,
+            HttpServletRequest request
+    ) {
+        return extendedSearch(limit, offset, showInReview, jsonQuery, request);
+    }
+
+    @PostMapping(value = "/search.rdf", produces = GazetteerMediaType.APPLICATION_RDF_VALUE)
+    public ModelAndView extendedSearchRdf(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestBody String jsonQuery,
+            HttpServletRequest request
+    ) {
+        return extendedSearch(limit, offset, showInReview, jsonQuery, request);
+    }
+
+    @PostMapping(value = "/search.kml", produces = GazetteerMediaType.APPLICATION_KML_VALUE)
+    public ModelAndView extendedSearchKml(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestBody String jsonQuery,
+            HttpServletRequest request
+    ) {
+        return extendedSearch(limit, offset, showInReview, jsonQuery, request);
+    }
+
+    @PostMapping("/search")
     public ModelAndView extendedSearch(
         @RequestParam(name = "limit", defaultValue = "10") int limit,
         @RequestParam(name = "offset", defaultValue = "0") int offset,
