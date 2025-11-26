@@ -19,6 +19,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import org.apache.commons.io.IOUtils;
+import org.dainst.gazetteer.GazetteerMediaType;
 import org.dainst.gazetteer.converter.JsonPlaceSerializer;
 import org.dainst.gazetteer.converter.ShapefileCreator;
 import org.dainst.gazetteer.dao.GroupRoleRepository;
@@ -49,12 +50,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 
@@ -98,10 +94,274 @@ public class SearchController {
         this.client = client;
     }
 
-    @RequestMapping(
-        value = { "/search.*", "/search" },
-        method = RequestMethod.GET
-    )
+    @GetMapping(value = "/search.rdf", produces = GazetteerMediaType.APPLICATION_RDF_VALUE)
+    public ModelAndView simpleSearchRdf(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "q", required = false) String q,
+            @RequestParam(name = "fq", required = false) String fq,
+            @RequestParam(name = "sort", required = false) String sort,
+            @RequestParam(name = "asc", defaultValue = "asc") String order,
+            @RequestParam(name = "type", required = false) String type,
+            @RequestParam(
+                    name = "view",
+                    required = false,
+                    defaultValue = "map,table"
+            ) String view,
+            @RequestParam(name = "callback", required = false) String callback,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestParam(name = "bbox", required = false) double[] bbox,
+            @RequestParam(
+                    name = "polygonFilterCoordinates",
+                    required = false
+            ) double[] polygonFilterCoordinates,
+            @RequestParam(
+                    name = "showHiddenPlaces",
+                    required = false
+            ) boolean showHiddenPlaces,
+            @RequestParam(name = "add", required = false) String add,
+            @RequestParam(name = "noPolygons", required = false) boolean noPolygons,
+            @RequestParam(name = "queryId", required = false) String queryId,
+            @RequestParam(name = "pretty", required = false) boolean pretty,
+            @RequestParam(
+                    name = "shortLanguagecodes",
+                    required = false
+            ) boolean shortLanguageCodes,
+            @RequestParam(name = "scroll", required = false) boolean scroll,
+            @RequestParam(name = "scrollId", required = false) String scrollId,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return simpleSearch(
+                limit,
+                offset,
+                q,
+                fq,
+                sort,
+                order,
+                type,
+                view,
+                callback,
+                showInReview,
+                bbox,
+                polygonFilterCoordinates,
+                showHiddenPlaces,
+                add,
+                noPolygons,
+                queryId,
+                pretty,
+                shortLanguageCodes,
+                scroll,
+                scrollId,
+                request,
+                response
+        );
+    }
+    @GetMapping(value = "/search.geojson", produces = GazetteerMediaType.APPLICATION_GEOJSON_VALUE)
+    public ModelAndView simpleSearchGeoJson(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "q", required = false) String q,
+            @RequestParam(name = "fq", required = false) String fq,
+            @RequestParam(name = "sort", required = false) String sort,
+            @RequestParam(name = "asc", defaultValue = "asc") String order,
+            @RequestParam(name = "type", required = false) String type,
+            @RequestParam(
+                    name = "view",
+                    required = false,
+                    defaultValue = "map,table"
+            ) String view,
+            @RequestParam(name = "callback", required = false) String callback,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestParam(name = "bbox", required = false) double[] bbox,
+            @RequestParam(
+                    name = "polygonFilterCoordinates",
+                    required = false
+            ) double[] polygonFilterCoordinates,
+            @RequestParam(
+                    name = "showHiddenPlaces",
+                    required = false
+            ) boolean showHiddenPlaces,
+            @RequestParam(name = "add", required = false) String add,
+            @RequestParam(name = "noPolygons", required = false) boolean noPolygons,
+            @RequestParam(name = "queryId", required = false) String queryId,
+            @RequestParam(name = "pretty", required = false) boolean pretty,
+            @RequestParam(
+                    name = "shortLanguagecodes",
+                    required = false
+            ) boolean shortLanguageCodes,
+            @RequestParam(name = "scroll", required = false) boolean scroll,
+            @RequestParam(name = "scrollId", required = false) String scrollId,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return simpleSearch(
+                limit,
+                offset,
+                q,
+                fq,
+                sort,
+                order,
+                type,
+                view,
+                callback,
+                showInReview,
+                bbox,
+                polygonFilterCoordinates,
+                showHiddenPlaces,
+                add,
+                noPolygons,
+                queryId,
+                pretty,
+                shortLanguageCodes,
+                scroll,
+                scrollId,
+                request,
+                response
+        );
+    }
+
+    @GetMapping(value = "/search.kml", produces = GazetteerMediaType.APPLICATION_KML_VALUE)
+    public ModelAndView simpleSearchKml(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "q", required = false) String q,
+            @RequestParam(name = "fq", required = false) String fq,
+            @RequestParam(name = "sort", required = false) String sort,
+            @RequestParam(name = "asc", defaultValue = "asc") String order,
+            @RequestParam(name = "type", required = false) String type,
+            @RequestParam(
+                    name = "view",
+                    required = false,
+                    defaultValue = "map,table"
+            ) String view,
+            @RequestParam(name = "callback", required = false) String callback,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestParam(name = "bbox", required = false) double[] bbox,
+            @RequestParam(
+                    name = "polygonFilterCoordinates",
+                    required = false
+            ) double[] polygonFilterCoordinates,
+            @RequestParam(
+                    name = "showHiddenPlaces",
+                    required = false
+            ) boolean showHiddenPlaces,
+            @RequestParam(name = "add", required = false) String add,
+            @RequestParam(name = "noPolygons", required = false) boolean noPolygons,
+            @RequestParam(name = "queryId", required = false) String queryId,
+            @RequestParam(name = "pretty", required = false) boolean pretty,
+            @RequestParam(
+                    name = "shortLanguagecodes",
+                    required = false
+            ) boolean shortLanguageCodes,
+            @RequestParam(name = "scroll", required = false) boolean scroll,
+            @RequestParam(name = "scrollId", required = false) String scrollId,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return simpleSearch(
+                limit,
+                offset,
+                q,
+                fq,
+                sort,
+                order,
+                type,
+                view,
+                callback,
+                showInReview,
+                bbox,
+                polygonFilterCoordinates,
+                showHiddenPlaces,
+                add,
+                noPolygons,
+                queryId,
+                pretty,
+                shortLanguageCodes,
+                scroll,
+                scrollId,
+                request,
+                response
+        );
+    }
+
+    @GetMapping(value = "/search.json", produces = GazetteerMediaType.APPLICATION_JSON_VALUE)
+    public ModelAndView simpleSearchJSON(
+            @RequestParam(name = "limit", defaultValue = "10") int limit,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "q", required = false) String q,
+            @RequestParam(name = "fq", required = false) String fq,
+            @RequestParam(name = "sort", required = false) String sort,
+            @RequestParam(name = "asc", defaultValue = "asc") String order,
+            @RequestParam(name = "type", required = false) String type,
+            @RequestParam(
+                    name = "view",
+                    required = false,
+                    defaultValue = "map,table"
+            ) String view,
+            @RequestParam(name = "callback", required = false) String callback,
+            @RequestParam(
+                    name = "showInReview",
+                    required = false
+            ) String showInReview,
+            @RequestParam(name = "bbox", required = false) double[] bbox,
+            @RequestParam(
+                    name = "polygonFilterCoordinates",
+                    required = false
+            ) double[] polygonFilterCoordinates,
+            @RequestParam(
+                    name = "showHiddenPlaces",
+                    required = false
+            ) boolean showHiddenPlaces,
+            @RequestParam(name = "add", required = false) String add,
+            @RequestParam(name = "noPolygons", required = false) boolean noPolygons,
+            @RequestParam(name = "queryId", required = false) String queryId,
+            @RequestParam(name = "pretty", required = false) boolean pretty,
+            @RequestParam(
+                    name = "shortLanguagecodes",
+                    required = false
+            ) boolean shortLanguageCodes,
+            @RequestParam(name = "scroll", required = false) boolean scroll,
+            @RequestParam(name = "scrollId", required = false) String scrollId,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        return simpleSearch(
+                limit,
+                offset,
+                q,
+                fq,
+                sort,
+                order,
+                type,
+                view,
+                callback,
+                showInReview,
+                bbox,
+                polygonFilterCoordinates,
+                showHiddenPlaces,
+                add,
+                noPolygons,
+                queryId,
+                pretty,
+                shortLanguageCodes,
+                scroll,
+                scrollId,
+                request,
+                response
+        );
+    }
+
+    @GetMapping("/search")
     public ModelAndView simpleSearch(
         @RequestParam(name = "limit", defaultValue = "10") int limit,
         @RequestParam(name = "offset", defaultValue = "0") int offset,
