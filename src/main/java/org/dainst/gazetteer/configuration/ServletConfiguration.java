@@ -13,8 +13,8 @@ import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.dainst.gazetteer.converter.JsonPlaceMessageConverter;
 import org.dainst.gazetteer.converter.KmlPlaceMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -90,7 +90,6 @@ public class ServletConfiguration implements WebMvcConfigurer {
     ) {
         configurer
             .mediaTypes(mediaTypeMap())
-            .favorPathExtension(true)
             .defaultContentType(mediaTypeMap().get("html"));
     }
 
