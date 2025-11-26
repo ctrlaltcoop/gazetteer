@@ -1,7 +1,13 @@
-# iDAI.gazetteer
+<br />
+<div align="center">
+  <h1 align="center"><strong>iDAI.gazetteer</strong></h1>
+  <p align="center">https://gazetteer.dainst.org/</p>
+</div>
+<br/>
 
-Das Projekt ist eine [spring boot](https://spring.io/projects/spring-boot) application und in ihm befinden sich sowohl
-Frontend als auch Backend-Code. Es werden lokale Instanzen von MongoDB und Elasticsearch benötigt.
+
+Gazetteer ist eine [Spring Boot](https://spring.io/projects/spring-boot)-Anwendung. In diesem Repostiory befinden sich sowohl
+Frontend als auch Backend-Code. Das Frontend wird vom Backend geservt. Es werden lokale Instanzen von MongoDB und Elasticsearch benötigt.
 
 ## Setup
 
@@ -65,11 +71,19 @@ Dazu muss ein Useraccount verwendet werden, der über Adminberechtigungen verfü
 
 ## Tests
 
+### Unit Tests
+
+```bash
+./mvnw test
+```
+
+### API Tests
+
 You can run tests again the API. In order to do it, you first need to have [Bruno](https://docs.usebruno.com/) installed.
 
 You can run the tests:
 
-```
+```bash
 cd gazetteer_api_test/ && bru run
 ```
 
@@ -103,15 +117,20 @@ Create a docker image with
 ### war
 For creating the production and test `.war` packages see the comments in [build.sh](./build.sh).
 
-# Migration from 2.9.9 to 3.0.0
+## Migration von 2.9.9 nach 3.0.0
 
-## ElasticSearch Migration from 6.x to 8.x
+### MongoDB Migration von 4 nach 8
 
-TODO
+#### Entwicklungs-Datenbank
 
-## MongoDB Migration from 4 to 8
+Falls Daten nicht mehr benötigt werden:
 
-### In Development (if you want to keep data)
+```bash
+docker compose rm mongodb
+rm -rf .mongo-data
+```
+
+Falls Daten behalten werden sollen:
 
 ```bash
 # Temporarily set version tag in docker-compose to '4.0'
@@ -122,17 +141,11 @@ docker compose exec mongodb mongorestore /data/dump
 rm -rf .mongo-data/dump
 ```
 
-### In Development (if you dont care about your data)
-
-```bash
-docker compose rm mongodb
-rm -rf .mongo-data
-```
-
-### In Production on-metal MongoDB
+#### In Produktion (ohne Docker)
 
 ```bash
 mongodump --out ./dump
+# Update your MongoDB installation after mongodump
 mongorestore ./dump
-# Verify that data is migrated and make a backup of dump
+# Afterwards, verify that data is migrated and make a backup of dump
 ```
