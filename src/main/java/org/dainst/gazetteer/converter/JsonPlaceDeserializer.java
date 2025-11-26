@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -61,9 +62,9 @@ public class JsonPlaceDeserializer {
 		}
 	}
 
-	public Place deserialize(InputStream jsonStream) throws HttpMessageNotReadableException {
-		
+	public Place deserialize(HttpInputMessage inputMessage) throws HttpMessageNotReadableException {
 		try {
+            InputStream jsonStream = inputMessage.getBody();
 		
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode objectNode = mapper.readValue(jsonStream, ObjectNode.class);
@@ -137,7 +138,7 @@ public class JsonPlaceDeserializer {
 				JsonNode ancientNode = prefNameNode.get("ancient");
 				JsonNode transliteratedNode = prefNameNode.get("transliterated");
 				if (titleNode == null)
-					throw new HttpMessageNotReadableException("Invalid prefName object. Attribute \"title\" has to be set.");
+					throw new HttpMessageNotReadableException("Invalid prefName object. Attribute \"title\" has to be set.", inputMessage);
 				if (languageNode != null) prefName.setLanguage(languageNode.asText());
 				if (ancientNode != null) prefName.setAncient(ancientNode.asBoolean());
 				if (transliteratedNode != null) prefName.setTransliterated(transliteratedNode.asBoolean());
@@ -155,7 +156,7 @@ public class JsonPlaceDeserializer {
 				JsonNode ancientNode = nameNode.get("ancient");
 				JsonNode transliteratedNode = nameNode.get("transliterated");
 				if (titleNode == null)
-					throw new HttpMessageNotReadableException("Invalid name object. Attribute \"title\" has to be set.");
+					throw new HttpMessageNotReadableException("Invalid name object. Attribute \"title\" has to be set.", inputMessage);
 				if (languageNode != null) name.setLanguage(languageNode.asText());
 				if (ancientNode != null) name.setAncient(ancientNode.asBoolean());
 				if (transliteratedNode != null) name.setTransliterated(transliteratedNode.asBoolean());
@@ -172,15 +173,15 @@ public class JsonPlaceDeserializer {
 				if (coordinatesNode != null && coordinatesNode.size() > 0) {					
 					JsonNode longNode = coordinatesNode.get(0);
 					if (longNode == null)
-						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.");
+						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.", inputMessage);
 					JsonNode latNode = coordinatesNode.get(1);
 					if (latNode == null)
-						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.");					
+						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.", inputMessage);
 		
 					double lng = longNode.asDouble(1000);
 					double lat = latNode.asDouble(1000);					
 					if (lat > 90 || lat < -90 || lng > 180 || lng < -180)
-						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.");
+						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.", inputMessage);
 					
 					prefLocation.setCoordinates(new double[]{lng, lat});
 					
@@ -240,15 +241,15 @@ public class JsonPlaceDeserializer {
 				if (coordinatesNode != null && coordinatesNode.size() > 0) {
 					JsonNode longNode = coordinatesNode.get(0);
 					if (longNode == null)
-						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.");
+						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.", inputMessage);
 					JsonNode latNode = coordinatesNode.get(1);
 					if (latNode == null)
-						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.");					
+						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.", inputMessage);
 	
 					double lng = longNode.asDouble(1000);
 					double lat = latNode.asDouble(1000);					
 					if (lat > 90 || lat < -90 || lng > 180 || lng < -180)
-						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.");
+						throw new HttpMessageNotReadableException("Invalid location object. Attribute \"coordinates\" cannot be read.", inputMessage);
 				
 					location.setCoordinates(new double[]{lng, lat});
 				
@@ -308,7 +309,7 @@ public class JsonPlaceDeserializer {
 				JsonNode languageNode = commentNode.get("language"); 
 				JsonNode textNode = commentNode.get("text");
 				if (textNode == null)
-					throw new HttpMessageNotReadableException("Invalid comment object. Attribute \"text\" has to be set.");
+					throw new HttpMessageNotReadableException("Invalid comment object. Attribute \"text\" has to be set.", inputMessage);
 				if (languageNode != null) comment.setLanguage(languageNode.asText());
 				comment.setText(textNode.asText());
 				logger.debug("updated comment: {}", comment);				
@@ -354,7 +355,7 @@ public class JsonPlaceDeserializer {
 				JsonNode valueNode = identifierNode.get("value"); 
 				JsonNode contextNode = identifierNode.get("context");
 				if (valueNode == null)
-					throw new HttpMessageNotReadableException("Invalid name object. Attribute \"value\" has to be set.");
+					throw new HttpMessageNotReadableException("Invalid name object. Attribute \"value\" has to be set.", inputMessage);
 				if (contextNode != null) identifier.setContext(contextNode.asText());
 				identifier.setValue(valueNode.asText());
 				logger.debug("updated identifier: {}", identifier);				
@@ -371,9 +372,9 @@ public class JsonPlaceDeserializer {
 				JsonNode predicateNode = linkNode.get("predicate");	
 				JsonNode descriptionNode = linkNode.get("description");
 				if (objNode == null)
-					throw new HttpMessageNotReadableException("Invalid link object. Attribute \"object\" has to be set.");
+					throw new HttpMessageNotReadableException("Invalid link object. Attribute \"object\" has to be set.", inputMessage);
 				if (predicateNode == null)
-					throw new HttpMessageNotReadableException("Invalid link object. Attribute \"predicate\" has to be set.");
+					throw new HttpMessageNotReadableException("Invalid link object. Attribute \"predicate\" has to be set.", inputMessage);
 				link.setObject(objNode.asText());
 				link.setPredicate(predicateNode.asText());
 				if (descriptionNode != null && !descriptionNode.asText().equals(""))
@@ -401,7 +402,7 @@ public class JsonPlaceDeserializer {
 						JsonNode userNode = commentNode.get("user"); 
 						JsonNode textNode = commentNode.get("text");
 						if (textNode == null)
-							throw new HttpMessageNotReadableException("Invalid comment object. Attribute \"text\" has to be set.");
+							throw new HttpMessageNotReadableException("Invalid comment object. Attribute \"text\" has to be set.", inputMessage);
 						if (userNode != null) {
 							if (!userNode.isNull()) comment.setUser(userNode.asText());
 						} else {
@@ -427,10 +428,10 @@ public class JsonPlaceDeserializer {
 					JsonNode groupNode = dataNode.get("recordGroup");
 					if (textNode == null)
 						throw new HttpMessageNotReadableException(
-								"Invalid group internal data object. Attribute \"text\" has to be set.");
+								"Invalid group internal data object. Attribute \"text\" has to be set.", inputMessage);
 					if (groupNode == null)
 						throw new HttpMessageNotReadableException(
-								"Invalid group internal data object. Attribute \"recordGroup\" has to be set.");
+								"Invalid group internal data object. Attribute \"recordGroup\" has to be set.", inputMessage);
 										
 					data.setText(textNode.asText());
 					data.setGroupId(groupNode.get("id").asText());
@@ -451,7 +452,7 @@ public class JsonPlaceDeserializer {
 		} catch (Exception e) {
 			String msg = "Unable to deserialize json to place object";
 			logger.error(msg, e);
-			throw new HttpMessageNotReadableException(e.getMessage(), e);
+			throw new HttpMessageNotReadableException(e.getMessage(), e, inputMessage);
 		}
 		
 	}

@@ -33,7 +33,7 @@ public class JsonPlaceMessageConverter extends AbstractHttpMessageConverter<Plac
 			HttpInputMessage inputMessage) throws IOException,
 			HttpMessageNotReadableException {
 		
-		return deserializer.deserialize(inputMessage.getBody());
+		return deserializer.deserialize(inputMessage);
 		
 	}
 
