@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import org.apache.catalina.Context;
 import org.apache.tomcat.util.scan.StandardJarScanner;
+import org.dainst.gazetteer.GazetteerMediaType;
 import org.dainst.gazetteer.converter.JsonPlaceMessageConverter;
 import org.dainst.gazetteer.converter.KmlPlaceMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,29 +48,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ServletComponentScan(basePackages = "org.dainst.gazetteer")
 public class ServletConfiguration implements WebMvcConfigurer {
 
-    private final String CONTENT_TYPE_HTML = "text/html";
-    private final String CONTENT_TYPE_KML =
-        "application/vnd.google-earth.kml+xml";
-    private final String CONTENT_TYPE_JSON = "application/json";
-    private final String CONTENT_TYPE_GEOJSON = "application/vnd.geo+json";
-    private final String CONTENT_TYPE_JS = "application/javascript";
-    private final String CONTENT_TYPE_RDF = "application/rdf+xml";
-
     @Bean
     public Map<String, String> mediaTypes() {
         return Map.of(
-            "html",
-            CONTENT_TYPE_HTML,
-            "kml",
-            CONTENT_TYPE_KML,
-            "json",
-            CONTENT_TYPE_JSON,
-            "geojson",
-            CONTENT_TYPE_GEOJSON,
-            "js",
-            CONTENT_TYPE_JS,
-            "rdf",
-            CONTENT_TYPE_RDF
+            "html", GazetteerMediaType.TEXT_HTML_VALUE,
+            "kml", GazetteerMediaType.APPLICATION_KML_VALUE,
+            "json", GazetteerMediaType.APPLICATION_JSON_VALUE,
+            "geojson", GazetteerMediaType.APPLICATION_GEOJSON_VALUE,
+            "js", GazetteerMediaType.APPLICATION_JAVASCRIPT_VALUE,
+            "rdf", GazetteerMediaType.APPLICATION_RDF_VALUE
         );
     }
 
@@ -143,42 +130,42 @@ public class ServletConfiguration implements WebMvcConfigurer {
                 "/WEB-INF/views/html/",
                 ".jsp"
             );
-        htmlResolver.setContentType(CONTENT_TYPE_HTML);
+        htmlResolver.setContentType(GazetteerMediaType.TEXT_HTML_VALUE);
 
         ChainableInternalResourceViewResolver jsonResolver =
             new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/json/",
                 ".jsp"
             );
-        jsonResolver.setContentType(CONTENT_TYPE_JSON);
+        jsonResolver.setContentType(GazetteerMediaType.APPLICATION_JSON_VALUE);
 
         ChainableInternalResourceViewResolver geoJsonResolver =
             new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/geojson/",
                 ".jsp"
             );
-        geoJsonResolver.setContentType(CONTENT_TYPE_GEOJSON);
+        geoJsonResolver.setContentType(GazetteerMediaType.APPLICATION_GEOJSON_VALUE);
 
         ChainableInternalResourceViewResolver kmlResolver =
             new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/kml/",
                 ".jsp"
             );
-        kmlResolver.setContentType(CONTENT_TYPE_KML);
+        kmlResolver.setContentType(GazetteerMediaType.APPLICATION_KML_VALUE);
 
         ChainableInternalResourceViewResolver jsResolver =
             new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/javascript/",
                 ".jsp"
             );
-        jsResolver.setContentType(CONTENT_TYPE_JS);
+        jsResolver.setContentType(GazetteerMediaType.APPLICATION_JAVASCRIPT_VALUE);
 
         ChainableInternalResourceViewResolver rdfResolver =
             new ChainableInternalResourceViewResolver(
                 "/WEB-INF/views/rdf/",
                 ".jsp"
             );
-        rdfResolver.setContentType(CONTENT_TYPE_RDF);
+        rdfResolver.setContentType(GazetteerMediaType.APPLICATION_RDF_VALUE);
 
         return new ArrayList<>(
             List.of(
