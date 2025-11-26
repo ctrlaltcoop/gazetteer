@@ -10,6 +10,12 @@ Frontend als auch Backend-Code. Das Frontend wird vom Backend geservt. Es werden
 
 ## Setup
 
+### Anforderungen
+
+Um die App im Standalone-Modus (z.B. im Production) zu betreiben, müssen [Maven](https://maven.apache.org/install.html) und [Maven Wrapper](https://maven.apache.org/tools/wrapper/) installiert sein.
+
+Für die Entwicklung, siehe [Entwicklungsumgebung](#entwicklungsumgebung).
+
 ### Konfiguration: Hauptanwendung
 
 Vor dem Start muss sichergestellt werden, dass die nötigen Konfigurationsdateien vorhanden sind:
@@ -29,9 +35,9 @@ z.B. Anpassen des Speicherpfades der Logdatei, da ggfs. in template Pfad keine S
    <param name="file" value="/Users/[USERNAME]/gazetteer.log" />
 ```
 
-#### docker compose
+### Entwicklungsumgebung
 
-Es existiert eine `compose.yml` um eine Entwicklungsumgebung zu starten.
+Es existiert eine `compose.yml` um eine Entwicklungsumgebung zu starten. Erstmal muss [docker compose](https://docs.docker.com/compose/install/) installiert sein.
 
 `docker compose up --build` startet:
 
