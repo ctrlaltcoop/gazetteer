@@ -105,7 +105,7 @@ Backend (Spring Boot) und Frontend (Javascript/AngularJS) werden im gleichen Pro
 
 ### maven wrapper
 
-You can run the application directly from shell by calling
+Um die Applikation direkt von der Shell aus zu starten:
 
 ```shell
 ./mvnw spring-boot:run
@@ -113,15 +113,11 @@ You can run the application directly from shell by calling
 
 ### docker
 
-Create a docker image with
+Zur Erstellung eines Docker-Images::
 
 ```shell
 ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=org.dainst/gazetteer
 ```
-
-### war
-
-For creating the production and test `.war` packages see the comments in [build.sh](./build.sh).
 
 ## Migration von 2.9.9 nach 3.0.0
 
